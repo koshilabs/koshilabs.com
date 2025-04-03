@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Dock effect styles */
+  .navbar-dock {
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  /* Custom hover effect for buttons */
+  .hover-glow {
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hover-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(105, 90, 205, 0.5);
+  }
+  
+  .hover-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(105, 90, 205, 0);
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: -1;
+  }
+  
+  .hover-glow:hover::after {
+    box-shadow: 0 0 20px 5px rgba(105, 90, 205, 0.3);
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, box-shadow;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px) translateZ(0);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
+                0 5px 10px -5px rgba(79, 70, 229, 0.2);
+  }
+  
+  .dock-blur {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(17, 17, 28, 0.5);
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .dock-blur:hover {
+    background-color: rgba(22, 22, 35, 0.6);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.2),
+      0 10px 10px -5px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+  
+  .nav-item {
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  
+  .nav-item:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500;
+  }
+  
+  /* Glowing effect */
+  .glow {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+  }
+  
+  .glow-hover:hover {
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+  }
+
+  /* Modal styling */
+  .modal-content {
+    @apply bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-lg border border-white/10 
+           rounded-2xl p-6 shadow-2xl relative overflow-hidden;
+    animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between mb-6 pb-4 border-b border-white/10;
+  }
+
+  .modal-title {
+    @apply text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500;
+  }
+
+  .modal-close {
+    @apply p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors;
+  }
+
+  .floating-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.15;
+    transform: scale(3);
+    z-index: 0;
+  }
+
+  /* Prose styling for modal content */
+  .prose-invert {
+    @apply text-gray-300;
+  }
+
+  .prose-invert strong {
+    @apply text-white font-semibold;
+  }
+
+  .prose-invert ul {
+    @apply space-y-2;
+  }
+
+  .prose-invert ul li {
+    @apply list-disc list-inside;
+  }
+
+  .prose-invert a {
+    @apply text-blue-400 hover:text-blue-300 transition-colors;
+  }
+
+  .prose-invert h3 {
+    @apply text-xl font-bold text-white mt-6 mb-3;
+  }
+
+  .prose-invert h4 {
+    @apply text-lg font-semibold text-white mt-5 mb-2;
+  }
+
+  /* Gradient glow card */
+  .gradient-glow-card {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .gradient-glow-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3b82f6, #9333ea, #3b82f6);
+    background-size: 400% 400%;
+    z-index: -1;
+    border-radius: inherit;
+    animation: gradient-glow 8s ease infinite;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-glow-card:hover::before {
+    opacity: 0.7;
+  }
+
+  @keyframes gradient-glow {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Advanced smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Adjust for fixed header */
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+}
+
+/* Enhanced animation performance */
+.transition-all, 
+.animate-*, 
+[class*="motion-"], 
+[class*="hover:"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Container width adjustment */
+.container {
+  @apply px-4 md:px-6 lg:px-8;
+  max-width: 1280px !important;
+}
+
+/* Products card container specific spacing */
+.products-card-container {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10 px-2 md:px-4;
+}
+
+/* Add spacing between menu items in nav */
+.nav-menu {
+  @apply flex items-center justify-center gap-3 px-4;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(79, 70, 229, 0.7), rgba(168, 85, 247, 0.7));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(79, 70, 229, 0.9), rgba(168, 85, 247, 0.9));
+} 
