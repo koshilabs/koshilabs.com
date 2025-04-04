@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Script from "next/script";
@@ -19,6 +19,11 @@ import {
   Layers3,
   Boxes,
   UserCircle2,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Github,
+  Instagram
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -252,21 +257,21 @@ const testimonials = [
     company: "Acme Corp",
     quote:
       "Their team delivered our project on time and within budget.  Highly recommended!  Their communication was excellent.",
-    image: "https://placehold.co/100x100/EEE/31343C?text=JS&font=Montserrat", // Placeholder
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JohnSmith&style=circle&backgroundColor=ffaabb",
   },
   {
     name: "Jane Doe",
     company: "Beta Inc",
     quote:
       "We've been working with them for years and they consistently exceed our expectations.  A true partner in our success.",
-    image: "https://placehold.co/100x100/EEE/31343C?text=JD&font=Montserrat", // Placeholder
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JaneDoe&style=circle&backgroundColor=aabbff",
   },
   {
     name: "David Lee",
     company: "Gamma Co",
     quote:
       "Their expertise in AI helped us transform our business.  A game-changer for our operations.  We're seeing significant ROI.",
-    image: "https://placehold.co/100x100/EEE/31343C?text=DL&font=Montserrat", // Placeholder
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=DavidLee&style=circle&backgroundColor=bbffaa",
   },
 ];
 
@@ -274,25 +279,25 @@ const teamMembers = [
   {
     name: "Raju",
     title: "CEO",
-    image: `https://api.dicebear.com/7.x/micah/svg?seed=Raju&backgroundColor=b6e3f4`,
+    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Raju&backgroundColor=1e88e5",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Sanam",
     title: "CTO",
-    image: `https://api.dicebear.com/7.x/micah/svg?seed=Sanam&backgroundColor=d1d4f9`,
+    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Sanam&backgroundColor=8e24aa",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Gopal",
     title: "Architect",
-    image: `https://api.dicebear.com/7.x/micah/svg?seed=Gopal&backgroundColor=d1d4f9`,
+    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Gopal&backgroundColor=43a047",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Frank",
     title: "Software Engineer",
-    image: `https://api.dicebear.com/7.x/micah/svg?seed=Frank&backgroundColor=c0aede`,
+    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Frank&backgroundColor=e53935",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
 ];
@@ -380,6 +385,58 @@ const HomePage: React.FC = () => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
+  // Add smooth scrolling
+  useEffect(() => {
+    // Helper function for smooth scrolling
+    const smoothScroll = (e: Event, target: HTMLElement) => {
+      e.preventDefault();
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 800;
+      let start: number | null = null;
+      
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const scrollY = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, scrollY);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+      
+      // Easing function
+      const ease = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+      
+      requestAnimationFrame(animation);
+    };
+
+    // Add event listeners to all anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            smoothScroll(e, targetElement as HTMLElement);
+          }
+        }
+      });
+    });
+
+    // Clean up
+    return () => {
+      anchorLinks.forEach(anchor => {
+        anchor.removeEventListener('click', () => {});
+      });
+    };
+  }, []);
+
   return (
     <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-black min-h-screen">
       <Head>
@@ -406,29 +463,24 @@ const HomePage: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Script
-        src="https://kit.fontawesome.com/your-kit-id.js"
-        strategy="afterInteractive"
-      />
-
       <Navbar />
 
       {/* Hero Section */}
       <header
         id="home"
-        className="container mx-auto px-4 pt-32 pb-32 flex items-center justify-between relative overflow-hidden min-h-[90vh]"
+        className="container mx-auto px-6 lg:px-8 pt-32 pb-32 flex items-center justify-between relative overflow-hidden min-h-[90vh]"
       >
-        <FloatingSVG top="5%" left="10%" delay={0} size="lg" opacity={0.8}>
+        <FloatingSVG top="5%" left="20%" delay={0} size="lg" opacity={0.8}>
           <Rocket className="text-blue-400/90" />
         </FloatingSVG>
-        <FloatingSVG top="30%" right="25%" delay={2} size="md" opacity={0.7}>
+        <FloatingSVG top="30%" right="15%" delay={2} size="md" opacity={0.7}>
           <Zap className="text-yellow-400/90" />
         </FloatingSVG>
-        <FloatingSVG bottom="15%" left="25%" delay={1} size="lg" opacity={0.8}>
+        <FloatingSVG bottom="15%" left="40%" delay={1} size="lg" opacity={0.8}>
           <Wand2 className="text-purple-400/90" />
         </FloatingSVG>
 
-        <div className="max-w-xl relative z-10 text-left mx-4 mt-8">
+        <div className="max-w-xl relative z-10 text-left mx-4 md:mx-8 mt-8">
           <motion.h1
             variants={fadeInVariants}
             initial="hidden"
@@ -467,22 +519,6 @@ const HomePage: React.FC = () => {
                 }}
               >
                 About Us
-              </Button>
-            </a>
-            <a href="#contact">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white
-                           hover:from-blue-600 hover:to-purple-600 transition-all duration-300
-                           shadow-lg hover:shadow-xl text-xl px-8 py-6 rounded-full font-semibold hover-glow"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Contact Us
               </Button>
             </a>
           </motion.div>
@@ -580,7 +616,7 @@ const HomePage: React.FC = () => {
       {/* About Us Section */}
       <section
         id="about"
-        className="container mx-auto px-4 py-36 relative overflow-hidden"
+        className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
         <FloatingSVG top="20%" right="15%" delay={0.3} size="xl" opacity={0.8}>
           <Gem className="text-purple-400/90" />
@@ -751,7 +787,7 @@ const HomePage: React.FC = () => {
       {/* Services Section */}
       <section
         id="services"
-        className="container mx-auto px-4 py-24 relative overflow-hidden"
+        className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden"
       >
         <FloatingSVG top="20%" right="10%" delay={0.5} size="lg">
           <Layers3 className="text-green-400/80" />
@@ -773,7 +809,7 @@ const HomePage: React.FC = () => {
       {/* Products Section */}
       <section
         id="products"
-        className="container mx-auto px-4 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10"
+        className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10"
       >
         <FloatingSVG top="15%" left="5%" delay={0.8} size="lg">
           <Boxes className="text-orange-400/80" />
@@ -843,7 +879,7 @@ const HomePage: React.FC = () => {
       {/* Team Section */}
       <section
         id="team"
-        className="container mx-auto px-4 py-36 relative overflow-hidden"
+        className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
         <FloatingSVG
           bottom="10%"
@@ -883,46 +919,31 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section
-        id="testimonials"
-        className="bg-gray-900/90 backdrop-blur-md py-36 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/5 to-purple-900/5"></div>
-        <FloatingSVG top="10%" right="8%" delay={0.4} size="xl" opacity={0.8}>
-          <Gem className="text-purple-400/90" />
-        </FloatingSVG>
-        <FloatingSVG
-          bottom="15%"
-          left="10%"
-          delay={0.9}
-          size="xl"
-          opacity={0.8}
-        >
-          <Cpu className="text-green-400/90" />
-        </FloatingSVG>
+      {/* Testimonials */}
+      <section id="testimonials" className="py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <FloatingSVG top="10%" right="5%" delay={0.3} size="lg">
+            <Users className="text-purple-400/80" />
+          </FloatingSVG>
 
-        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={fadeInVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 relative z-10 font-heading inline-block">
-              What Our Clients Say
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              What Our <span className="text-blue-400">Clients Say</span>
             </h2>
-            <div className="w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
-            <p className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto">
-              We pride ourselves on delivering excellence and building long-term
-              relationships. Here's what some of our clients have to say about
-              working with us.
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Hear from businesses that have trusted us with their projects.
             </p>
+            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {testimonials.map((testimonial) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={testimonial.name}
                 testimonial={testimonial}
@@ -935,63 +956,77 @@ const HomePage: React.FC = () => {
       {/* FAQ Section */}
       <section
         id="faq"
-        className="bg-gray-950/50 backdrop-blur-md py-36 rounded-b-[4rem] border-b border-white/10 relative overflow-hidden"
+        className="bg-gray-950/50 backdrop-blur-md py-24 rounded-b-[4rem] border-b border-white/10 relative overflow-hidden"
       >
-        <FloatingSVG top="20%" right="10%" delay={0.7} size="xl" opacity={0.8}>
-          <BrainCircuit className="text-yellow-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="15%" left="8%" delay={1.1} size="xl" opacity={0.8}>
-          <Search className="text-blue-400/90" />
-        </FloatingSVG>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 lg:px-8">
+          <FloatingSVG top="20%" right="10%" delay={0.7} size="xl" opacity={0.8}>
+            <Boxes className="text-blue-400/90" />
+          </FloatingSVG>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={fadeInVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 relative z-10 font-heading inline-block">
-              Frequently Asked Questions
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Frequently <span className="text-blue-400">Asked Questions</span>
             </h2>
-            <div className="w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
-            <p className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto">
-              Have questions about our services? Find quick answers to common
-              queries below, or reach out to us directly for more information.
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Find answers to common questions about our services and process.
             </p>
+            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />
           </motion.div>
 
-          <div className="max-w-4xl mx-auto relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-purple-500/5 blur-xl -z-10 rounded-3xl transform scale-105"></div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl">
-              {faqs.map((faq, index) => (
-                <FaqItem
-                  key={index}
-                  faq={faq}
-                  isOpen={openFaqIndex === index}
-                  onToggle={() => toggleFaq(index)}
-                />
-              ))}
-            </div>
+          <div className="max-w-4xl mx-auto">
+            {faqs.map((faq, index) => (
+              <FaqItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openFaqIndex === index}
+                onClick={() => toggleFaq(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="container mx-auto px-4 py-24 relative overflow-hidden"
-      >
-        <FloatingSVG top="15%" right="10%" delay={0.5} size="lg">
-          <Briefcase className="text-blue-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="20%" left="5%" delay={1.3} size="lg">
-          <Zap className="text-purple-400/80" />
-        </FloatingSVG>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-16">
-          <ContactInfo />
-          <div className="w-full max-w-md">
-            <ContactForm />
+      <section id="contact" className="py-20 relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8">
+          <FloatingSVG top="15%" right="10%" delay={0.5} size="lg">
+            <Briefcase className="text-blue-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="10%" left="5%" delay={0.7} size="md">
+            <Laptop2 className="text-purple-500/80" />
+          </FloatingSVG>
+
+          <motion.div
+            variants={fadeInVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-10">
+              Let's<span className="text-blue-400"> Work Together</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-10">
+              Ready to start your next project? Reach out to us to discuss your
+              needs and how we can help bring your vision to life.
+            </p>
+            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <ContactInfo />
+            </div>
+            <div className="w-full max-w-md mx-auto md:mx-0">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
@@ -1102,31 +1137,31 @@ const HomePage: React.FC = () => {
                   href="https://www.facebook.com/koshilabs"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
-                  <i className="fab fa-facebook-f text-2xl"></i>
+                  <Facebook className="w-6 h-6" />
                 </a>
                 <a
                   href="https://x.com/koshilabs"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
-                  <i className="fab fa-twitter text-2xl"></i>
+                  <Twitter className="w-6 h-6" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/koshilabs"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
-                  <i className="fab fa-linkedin-in text-2xl"></i>
+                  <Linkedin className="w-6 h-6" />
                 </a>
                 <a
                   href="https://github.com/koshilabs"
                   className="text-gray-400 hover:text-purple-400 transition-colors"
                 >
-                  <i className="fab fa-github text-2xl"></i>
+                  <Github className="w-6 h-6" />
                 </a>
                 <a
                   href="https://www.instagram.com/koshilabs"
                   className="text-gray-400 hover:text-pink-400 transition-colors"
                 >
-                  <i className="fab fa-instagram text-2xl"></i>
+                  <Instagram className="w-6 h-6" />
                 </a>
               </div>
               <div className="text-gray-400 text-lg">

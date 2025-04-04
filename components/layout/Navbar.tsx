@@ -160,6 +160,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   const navItems = [
     { label: "Home", href: "#home" },
@@ -175,6 +176,21 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -245,71 +261,152 @@ const Navbar: React.FC = () => {
     }
   };
 
+  // Enhance scroll behavior
+  useEffect(() => {
+    // Helper function for extra smooth scrolling
+    const smoothScroll = (e: Event, target: HTMLElement) => {
+      e.preventDefault();
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; // Increased duration for smoother effect
+      let start: number | null = null;
+      
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const scrollY = easeOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, scrollY);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+      
+      // Improved easing function for smoother movement
+      const easeOutCubic = (t: number, b: number, c: number, d: number) => {
+        t /= d;
+        t--;
+        return c * (t * t * t + 1) + b;
+      };
+      
+      requestAnimationFrame(animation);
+    };
+
+    // Add event listeners to all anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            smoothScroll(e, targetElement as HTMLElement);
+          }
+        }
+      });
+    });
+
+    // Clean up
+    return () => {
+      anchorLinks.forEach(anchor => {
+        anchor.removeEventListener('click', () => {});
+      });
+    };
+  }, []);
+
   return (
     <>
-      <motion.nav
-        ref={navRef}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-40 transition-all duration-300 max-w-4xl w-full dock-blur"
-      >
-        <div className="flex items-center justify-between px-4 sm:px-6">
-          <a
-            href="#home"
-            className="flex items-center nav-item"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("#home");
-            }}
-          >
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter hidden sm:inline-block">
-                Koshi<span className="font-light">Labs</span>
-              </span>
-            </div>
-          </a>
+      {isMobile ? (
+        // Mobile Navbar
+        <motion.nav
+          ref={navRef}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed top-0 left-0 right-0 z-40 bg-gray-900/90 backdrop-blur-md shadow-lg transition-all duration-300"
+        >
+          <div className="flex items-center justify-between px-4 py-3">
+            <a
+              href="#home"
+              className="flex items-center nav-item"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("#home");
+              }}
+            >
+              <div className="flex items-center">
+                <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter">
+                  Koshi<span className="font-light">Labs</span>
+                </span>
+              </div>
+            </a>
 
-          <div className="hidden md:flex items-center justify-center nav-menu">
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent default anchor behavior
-                  scrollToSection(item.href);
-                }}
-                className={cn(
-                  "relative px-3 py-2 rounded-full transition-all duration-200 text-sm font-medium nav-item",
-                  activeSection === item.href.substring(1)
-                    ? "text-white bg-white/10"
-                    : "text-gray-200 hover:text-white"
-                )}
-              >
-                {item.label}
-                {activeSection === item.href.substring(1) && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 mx-auto w-1.5 h-1.5 bg-blue-400 rounded-full"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex md:hidden">
             <Button
               variant="ghost"
               onClick={toggleMobileMenu}
-              className="text-white hover:bg-white/10 ml-auto rounded-full w-10 h-10 p-0 flex items-center justify-center"
+              className="text-white hover:bg-white/10 rounded-full w-10 h-10 p-0 flex items-center justify-center"
               aria-label="Toggle mobile menu"
             >
               <Menu className="w-5 h-5" />
             </Button>
           </div>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      ) : (
+        // Desktop Navbar
+        <motion.nav
+          ref={navRef}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed top-4 left-0 right-0 mx-auto z-40 transition-all duration-300 w-fit max-w-[95%]"
+        >
+          <div className="flex items-center bg-gray-900/40 backdrop-blur-md border border-white/10 rounded-full py-2 px-4">
+            <a
+              href="#home"
+              className="flex items-center mr-3"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("#home");
+              }}
+            >
+              <div className="flex items-center">
+                <div className="relative">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/10 to-purple-500/10 rounded-full blur-md"></div>
+                  <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter hidden sm:inline-block relative z-10">
+                    Koshi<span className="font-light">Labs</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <div className="flex items-center">
+              {navItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent default anchor behavior
+                    scrollToSection(item.href);
+                  }}
+                  className={cn(
+                    "relative px-3 py-1.5 transition-all duration-200 text-sm md:text-base font-medium rounded-full",
+                    activeSection === item.href.substring(1)
+                      ? "text-white bg-white/10"
+                      : "text-gray-200 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  {item.label}
+                  {activeSection === item.href.substring(1) && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute bottom-0 left-0 right-0 mx-auto w-1 h-1 bg-blue-400 rounded-full"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
+                    />
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        </motion.nav>
+      )}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}

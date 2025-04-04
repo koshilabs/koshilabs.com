@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         whileHover="whileHover"
         className="bg-white/5 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white/10
                             transition-all duration-300 hover:bg-white/10
-                            flex flex-col items-start h-full card-hover"
+                            flex flex-col items-start h-full card-hover overflow-hidden"
       >
         <div className="mb-4">{product.icon}</div>
         <h3 className="text-2xl font-semibold text-white mb-3">
@@ -95,7 +95,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         })}
       >
         <div
-          className="text-gray-300"
+          className="text-gray-300 rounded-b-xl overflow-hidden"
           dangerouslySetInnerHTML={{ __html: product.detailedDescription }}
         />
       </Modal>

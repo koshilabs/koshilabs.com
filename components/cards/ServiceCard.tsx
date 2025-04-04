@@ -68,7 +68,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         onClose={() => setIsModalOpen(false)}
         title={service.title}
         icon={React.cloneElement(service.icon as React.ReactElement, {
-          className: "w-8 h-8",
+          className: "w-full h-full",
         })}
       >
         <div

@@ -33,11 +33,16 @@ const TeamMemberCard: React.FC<TeamMemberProps> = ({ member }) => {
 
         {/* Avatar Container with Gradient Border */}
         <div className="relative pt-6 pb-5 px-6">
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full p-1 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg">
+          <div className="w-28 h-28 mx-auto mb-4 rounded-full p-1 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg overflow-hidden">
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-full object-cover rounded-full bg-gray-700"
+              className="w-full h-full object-contain rounded-full bg-gray-700"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.onerror = null;
+                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`;
+              }}
             />
           </div>
 

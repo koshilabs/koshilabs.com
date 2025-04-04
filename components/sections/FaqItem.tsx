@@ -1,25 +1,21 @@
 import React from "react";
 import { Collapsible } from "@/components/ui/collapsible";
 
-interface FaqProps {
+interface FaqItemProps {
   question: string;
   answer: string;
-}
-
-interface FaqItemProps {
-  faq: FaqProps;
   isOpen?: boolean;
-  onToggle?: () => void;
+  onClick?: () => void;
 }
 
-const FaqItem: React.FC<FaqItemProps> = ({ faq, isOpen, onToggle }) => (
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, onClick }) => (
   <Collapsible
-    title={faq.question}
+    title={question}
     isOpen={isOpen}
-    onToggle={onToggle}
+    onToggle={onClick}
     className="mb-4 last:mb-0 last:border-0"
   >
-    {faq.answer}
+    {answer}
   </Collapsible>
 );
 

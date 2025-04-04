@@ -84,7 +84,7 @@ export const Modal: React.FC<ModalProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Left content section */}
-            <div className="flex-1 relative z-10 bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-8 md:p-10 overflow-y-auto">
+            <div className="flex-1 relative z-10 bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-8 md:p-10 overflow-y-auto rounded-l-2xl">
               {/* Header */}
               <div className="relative mb-8 pb-6 border-b border-white/10">
                 <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
@@ -94,14 +94,14 @@ export const Modal: React.FC<ModalProps> = ({
               </div>
 
               {/* Content */}
-              <div className="prose prose-invert prose-lg prose-p:text-gray-300 max-w-none">
+              <div className="prose prose-invert prose-lg prose-p:text-gray-300 max-w-none rounded-2xl overflow-hidden">
                 {children}
               </div>
             </div>
 
             {/* Right illustration section */}
             {icon && (
-              <div className="hidden md:block md:w-2/5 bg-gradient-to-br from-gray-800/80 to-gray-900/90 relative overflow-hidden">
+              <div className="hidden md:block md:w-2/5 bg-gradient-to-br from-gray-800/80 to-gray-900/90 relative overflow-hidden rounded-r-2xl">
                 {/* Background decorative elements */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
                 <div className="absolute -left-24 top-40 w-52 h-52 bg-blue-500/10 rounded-full blur-[50px]"></div>
@@ -164,6 +164,52 @@ export const Modal: React.FC<ModalProps> = ({
                 >
                   {icon}
                 </motion.div>
+
+                {/* Connected nodes effect */}
+                <motion.div
+                  className="absolute top-[20%] left-[20%] w-6 h-6 bg-blue-500/20 rounded-full"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute bottom-[30%] right-[25%] w-8 h-8 bg-purple-500/20 rounded-full"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                />
+                <motion.div
+                  className="absolute top-[60%] right-[20%] w-5 h-5 bg-green-500/20 rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.7, 0.5]
+                  }}
+                  transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+                />
+
+                {/* Connection lines */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 w-[100px] h-[1px] bg-blue-400/20 origin-left"
+                  style={{ rotate: -45 }}
+                  animate={{ opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute top-1/2 left-1/2 w-[100px] h-[1px] bg-purple-400/20 origin-left"
+                  style={{ rotate: 45 }}
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                />
+                <motion.div
+                  className="absolute top-1/2 left-1/2 w-[120px] h-[1px] bg-green-400/20 origin-left"
+                  style={{ rotate: 160 }}
+                  animate={{ opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
+                />
 
                 {/* Animated glow effect */}
                 <motion.div
