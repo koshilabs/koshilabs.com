@@ -1,16 +1,16 @@
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import { Inter, Manrope } from 'next/font/google';
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { Inter, Manrope } from "next/font/google";
 
 // Define fonts
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
+  subsets: ["latin"],
+  variable: "--font-manrope",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,4 +19,4 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </main>
   );
-} 
+}

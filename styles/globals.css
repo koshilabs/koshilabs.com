@@ -37,27 +37,27 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Dock effect styles */
   .navbar-dock {
     position: relative;
     transition: transform 0.3s;
   }
-  
+
   /* Custom hover effect for buttons */
   .hover-glow {
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     position: relative;
     z-index: 1;
   }
-  
+
   .hover-glow:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(105, 90, 205, 0.5);
   }
-  
+
   .hover-glow::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -68,11 +68,11 @@
     transition: box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     z-index: -1;
   }
-  
+
   .hover-glow:hover::after {
     box-shadow: 0 0 20px 5px rgba(105, 90, 205, 0.3);
   }
-  
+
   /* Card hover effects */
   .card-hover {
     transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -81,38 +81,34 @@
     perspective: 1000px;
     will-change: transform, box-shadow;
   }
-  
+
   .card-hover:hover {
     transform: translateY(-8px) translateZ(0);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
-                0 5px 10px -5px rgba(79, 70, 229, 0.2);
+      0 5px 10px -5px rgba(79, 70, 229, 0.2);
   }
-  
+
   .dock-blur {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background-color: rgba(17, 17, 28, 0.5);
-    box-shadow: 
-      0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05),
-      0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.1);
     border-radius: 32px;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     padding: 0.5rem 0.25rem;
   }
-  
+
   .dock-blur:hover {
     background-color: rgba(22, 22, 35, 0.6);
-    box-shadow: 
-      0 20px 25px -5px rgba(0, 0, 0, 0.2),
-      0 10px 10px -5px rgba(0, 0, 0, 0.1),
-      0 0 0 1px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2),
+      0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.15);
   }
-  
+
   .nav-item {
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
-  
+
   .nav-item:hover {
     transform: translateY(-2px);
   }
@@ -122,12 +118,12 @@
   .text-gradient {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500;
   }
-  
+
   /* Glowing effect */
   .glow {
     box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
   }
-  
+
   .glow-hover:hover {
     box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
   }
@@ -197,7 +193,7 @@
   }
 
   .gradient-glow-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -217,9 +213,15 @@
   }
 
   @keyframes gradient-glow {
-    0% { background-position: 0% 50% }
-    50% { background-position: 100% 50% }
-    100% { background-position: 0% 50% }
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   @keyframes modal-in {
@@ -244,9 +246,9 @@ html {
 }
 
 /* Enhanced animation performance */
-.transition-all, 
-.animate-*, 
-[class*="motion-"], 
+.transition-all,
+.animate-*,
+[class*="motion-"],
 [class*="hover:"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -283,10 +285,18 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(79, 70, 229, 0.7), rgba(168, 85, 247, 0.7));
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 70, 229, 0.7),
+    rgba(168, 85, 247, 0.7)
+  );
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgba(79, 70, 229, 0.9), rgba(168, 85, 247, 0.9));
-} 
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 70, 229, 0.9),
+    rgba(168, 85, 247, 0.9)
+  );
+}

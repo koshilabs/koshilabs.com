@@ -20,11 +20,11 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 }) => {
   // Use internal state if no external control is provided
   const [internalIsOpen, setInternalIsOpen] = React.useState(false);
-  
+
   // Determine if using controlled or uncontrolled mode
   const isControlled = externalIsOpen !== undefined;
   const isOpen = isControlled ? externalIsOpen : internalIsOpen;
-  
+
   const handleToggle = () => {
     if (isControlled) {
       if (externalOnToggle) externalOnToggle();
@@ -39,7 +39,9 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         onClick={handleToggle}
         className="w-full text-left py-5 flex items-center justify-between focus:outline-none"
       >
-        <h3 className="text-xl md:text-2xl font-semibold text-white">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-semibold text-white">
+          {title}
+        </h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -47,7 +49,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           <ChevronDown className="h-5 w-5 text-gray-400" />
         </motion.div>
       </button>
-      
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -63,4 +65,4 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       </AnimatePresence>
     </div>
   );
-}; 
+};
