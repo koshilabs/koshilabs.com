@@ -39,7 +39,7 @@ const ContactForm: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://website-api.koshilabs.com/api/contacts",
+        "http://koshilabs-api.runasp.net/api/contacts",
         {
           method: "POST",
           headers: {
