@@ -17,6 +17,7 @@ interface MobileMenuProps {
     isOpen: boolean;
     onClose: () => void;
     navItems: NavItem[];
+    activeSection: string;
 }
 
 const MobileSubmenuItem: React.FC<{
@@ -74,7 +75,7 @@ const MobileSubmenuItem: React.FC<{
 };
 
 // Mobile Menu Component
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems, activeSection }) => {
     return (
         <AnimatePresence>
             {isOpen && (
@@ -125,9 +126,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
                                             }
                                             onClose();
                                         }}
-                                        className="flex items-center justify-center text-gray-200 hover:text-white hover:bg-white/10 py-3 px-4 rounded-xl transition-all text-lg font-medium w-full mb-2 border border-transparent hover:border-white/10"
+                                        className={cn(
+                                            "relative px-3 py-2 rounded-full transition-all duration-200 text-sm font-medium nav-item",
+                                            activeSection === item.href.substring(1)
+                                                ? "text-white bg-white/10"
+                                                : "text-gray-200 hover:text-white"
+                                        )}
                                     >
                                         {item.label}
+                                        {activeSection === item.href.substring(1) && (
+                                            <motion.div
+                                                layoutId="navbar-indicator"
+                                                className="absolute bottom-0 left-0 right-0 mx-auto w-1.5 h-1.5 bg-blue-400 rounded-full"
+                                                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
                                     </a>
                                 )
                             )}
@@ -248,38 +261,40 @@ const Navbar: React.FC = () => {
                                 }}
                                 className={cn(
                                     "relative px-3 py-2 rounded-full transition-all duration-200 text-sm font-medium nav-item",
-                                    item.href.substring(1) === activeSection 
-                                    ? "text-white bg-white/10" // Active state
-                                    : "text-gray-300 hover:text-white hover:bg-white/5" // Inactive state
+                                    activeSection === item.href.substring(1)
+                                        ? "text-white bg-white/10"
+                                        : "text-gray-200 hover:text-white"
                                 )}
                             >
                                 {item.label}
-                                {item.href.substring(1) === activeSection && (
+                                {activeSection === item.href.substring(1) && (
                                     <motion.div
                                         layoutId="navbar-indicator"
-                                        className="absolute bottom-0 left-0 right-0 mx-auto w-1 h-1 bg-blue-400 rounded-full"
+                                        className="absolute bottom-0 left-0 right-0 mx-auto w-1.5 h-1.5 bg-blue-400 rounded-full"
                                         transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                                     />
                                 )}
                             </a>
                         ))}
                     </div>
-                    
-                    <div className="md:hidden">
+
+                    <div className="flex md:hidden">
                         <Button
                             variant="ghost"
                             onClick={toggleMobileMenu}
-                            className="text-white hover:bg-white/10 nav-item"
+                            className="text-white hover:bg-white/10 ml-auto rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                            aria-label="Toggle mobile menu"
                         >
-                            <Menu className="w-6 h-6" />
+                            <Menu className="w-5 h-5" />
                         </Button>
                     </div>
                 </div>
             </motion.nav>
-            <MobileMenu
-                isOpen={isMobileMenuOpen}
-                onClose={toggleMobileMenu}
-                navItems={navItems}
+            <MobileMenu 
+                isOpen={isMobileMenuOpen} 
+                onClose={() => setMobileMenuOpen(false)} 
+                navItems={navItems} 
+                activeSection={activeSection}
             />
         </>
     );

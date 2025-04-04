@@ -75,31 +75,60 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 25 }}
-            className="modal-content w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="modal-content w-full max-w-4xl max-h-[90vh] overflow-y-auto flex flex-col md:flex-row relative"
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              onClick={onClose}
+              className="absolute right-4 top-4 z-20 p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/80 transition-colors border border-white/10"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5 text-gray-300 hover:text-white transition-colors" />
+            </button>
+            
+            <div className="flex-1 relative z-10 p-6 pr-12">
+              <div className="mb-6 pb-4 border-b border-white/10">
+                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{title}</h3>
+              </div>
+              
+              <div className="prose prose-invert prose-sm sm:prose-base max-w-none">
+                {children}
+              </div>
+            </div>
+            
             {icon && (
-              <div className="floating-icon">
-                {icon}
+              <div className="hidden md:block md:w-2/5 relative overflow-hidden rounded-r-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    y: [0, -20, 0, 20, 0],
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.5 },
+                    scale: { duration: 0.5 },
+                    y: { repeat: Infinity, duration: 10, ease: "easeInOut" },
+                  }}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 text-blue-400/30"
+                >
+                  {icon}
+                </motion.div>
+                
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10"
+                  animate={{ 
+                    opacity: [0.3, 0.5, 0.3] 
+                  }}
+                  transition={{ 
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut" 
+                  }}
+                />
               </div>
             )}
-            
-            <div className="modal-header">
-              <h3 className="modal-title">{title}</h3>
-              <button
-                onClick={onClose}
-                className="modal-close"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
-              </button>
-            </div>
-            
-            <div className="relative z-10 prose prose-invert prose-sm sm:prose-base max-w-none">
-              {children}
-            </div>
-            
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 pointer-events-none"></div>
             
             <motion.div 
               className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -368,6 +368,12 @@ const cardVariants = {
 };
 
 const HomePage: React.FC = () => {
+    const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+    const toggleFaq = (index: number) => {
+        setOpenFaqIndex(openFaqIndex === index ? null : index);
+    };
+
     return (
         <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-black min-h-screen">
             <Head>
@@ -387,22 +393,23 @@ const HomePage: React.FC = () => {
             <Navbar />
             
             {/* Hero Section */}
-            <header id="home" className="container mx-auto px-4 pt-32 pb-20 text-center flex items-center justify-center relative overflow-hidden min-h-[90vh]">
-                <FloatingSVG top="10%" left="10%" delay={0}>
-                    <Rocket className="w-16 h-16 text-blue-400/80" />
+            <header id="home" className="container mx-auto px-4 pt-32 pb-20 flex items-center justify-between relative overflow-hidden min-h-[90vh]">
+                <FloatingSVG top="10%" left="10%" delay={0} size="md">
+                    <Rocket className="text-blue-400/80" />
                 </FloatingSVG>
-                <FloatingSVG top="30%" right="20%" delay={2}>
-                    <Zap className="w-14 h-14 text-yellow-400/80" />
+                <FloatingSVG top="30%" right="30%" delay={2} size="sm">
+                    <Zap className="text-yellow-400/80" />
                 </FloatingSVG>
-                <FloatingSVG bottom="20%" left="30%" delay={1}>
-                    <Wand2 className="w-18 h-18 text-purple-400/80" />
+                <FloatingSVG bottom="20%" left="30%" delay={1} size="md">
+                    <Wand2 className="text-purple-400/80" />
                 </FloatingSVG>
-                <div className="max-w-4xl relative z-10">
+                
+                <div className="max-w-xl relative z-10 text-left">
                     <motion.h1
                         variants={fadeInVariants}
                         initial="hidden"
                         animate="visible"
-                        className="text-5xl sm:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-8
+                        className="text-5xl sm:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-8
                                    drop-shadow-lg font-heading"
                     >
                         Crafting Digital Excellence
@@ -411,7 +418,7 @@ const HomePage: React.FC = () => {
                         variants={fadeInVariants}
                         initial="hidden"
                         animate="visible"
-                        className="text-xl sm:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
+                        className="text-xl text-gray-300 mb-12 leading-relaxed"
                     >
                         Your trusted partner for innovative software solutions. We specialize in development, consulting, and AI-powered services.
                     </motion.p>
@@ -436,12 +443,100 @@ const HomePage: React.FC = () => {
                         </a>
                     </motion.div>
                 </div>
+                
+                <div className="hidden md:block w-1/2 relative">
+                    <motion.div 
+                        className="absolute top-1/2 right-[10%] transform -translate-y-1/2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <motion.div 
+                            className="relative w-80 h-80"
+                            animate={{ 
+                                y: [0, -15, 0, 15, 0],
+                            }}
+                            transition={{ 
+                                duration: 8, 
+                                repeat: Infinity,
+                                ease: "easeInOut" 
+                            }}
+                        >
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-3xl"></div>
+                            
+                            {/* Globe/World */}
+                            <div className="absolute inset-0 border-2 border-blue-400/30 rounded-full" />
+                            <div className="absolute inset-[10%] border border-blue-400/20 rounded-full" />
+                            <div className="absolute inset-[20%] border border-blue-400/10 rounded-full" />
+                            
+                            {/* Tech connection points */}
+                            <motion.div 
+                                className="absolute top-[10%] left-[20%] w-3 h-3 bg-blue-400 rounded-full"
+                                animate={{ scale: [1, 1.5, 1] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                            />
+                            <motion.div 
+                                className="absolute bottom-[15%] right-[30%] w-4 h-4 bg-purple-400 rounded-full"
+                                animate={{ scale: [1, 1.8, 1] }}
+                                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                            />
+                            <motion.div 
+                                className="absolute top-[30%] right-[15%] w-3 h-3 bg-green-400 rounded-full"
+                                animate={{ scale: [1, 1.3, 1] }}
+                                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                            />
+                            
+                            {/* Connection lines */}
+                            <motion.div className="absolute top-[45%] left-[45%] w-[100%] h-[1px] bg-blue-400/40 origin-left"
+                                style={{ rotate: -30 }}
+                                animate={{ opacity: [0.2, 0.6, 0.2] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                            />
+                            <motion.div className="absolute top-[45%] left-[45%] w-[90%] h-[1px] bg-purple-400/40 origin-left"
+                                style={{ rotate: 45 }}
+                                animate={{ opacity: [0.2, 0.5, 0.2] }}
+                                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                            />
+                            <motion.div className="absolute top-[45%] left-[45%] w-[80%] h-[1px] bg-green-400/40 origin-left"
+                                style={{ rotate: 160 }}
+                                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                                transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
+                            />
+                            
+                            {/* Tech icons */}
+                            <motion.div 
+                                className="absolute top-0 left-[45%] p-2 bg-gray-900/80 rounded-full border border-blue-400/30"
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                            >
+                                <Code2 className="w-5 h-5 text-blue-400" />
+                            </motion.div>
+                            <motion.div 
+                                className="absolute bottom-5 right-[25%] p-2 bg-gray-900/80 rounded-full border border-purple-400/30"
+                                animate={{ y: [0, 8, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                            >
+                                <Cpu className="w-5 h-5 text-purple-400" />
+                            </motion.div>
+                            <motion.div 
+                                className="absolute right-0 top-[40%] p-2 bg-gray-900/80 rounded-full border border-green-400/30"
+                                animate={{ x: [0, 8, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+                            >
+                                <BrainCircuit className="w-5 h-5 text-green-400" />
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
+                </div>
             </header>
 
             {/* Services Section */}
             <section id="services" className="container mx-auto px-4 py-24 relative overflow-hidden">
-                <FloatingSVG top="20%" right="10%" delay={0.5}>
-                    <Layers3 className="w-20 h-20 text-green-400/80" />
+                <FloatingSVG top="20%" right="10%" delay={0.5} size="lg">
+                    <Layers3 className="text-green-400/80" />
+                </FloatingSVG>
+                <FloatingSVG bottom="10%" left="5%" delay={1.5} size="lg">
+                    <Code2 className="text-blue-400/80" />
                 </FloatingSVG>
                 <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
                     Our Services
@@ -456,8 +551,11 @@ const HomePage: React.FC = () => {
 
             {/* Products Section */}
             <section id="products" className="container mx-auto px-4 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10">
-                <FloatingSVG top="15%" left="5%" delay={0.8}>
-                    <Boxes className="w-18 h-18 text-orange-400/80" />
+                <FloatingSVG top="15%" left="5%" delay={0.8} size="lg">
+                    <Boxes className="text-orange-400/80" />
+                </FloatingSVG>
+                <FloatingSVG bottom="25%" right="8%" delay={1.2} size="lg">
+                    <Database className="text-purple-400/80" />
                 </FloatingSVG>
                 <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
                     Our Products
@@ -474,14 +572,41 @@ const HomePage: React.FC = () => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="gradient-glow-card bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10 shadow-xl"
+                        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
                     >
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                        <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+                        <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+                        
+                        <div className="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex items-center gap-6">
-                                <Rocket className="w-14 h-14 text-purple-400" />
-                                <h3 className="text-2xl md:text-3xl font-semibold text-white">More projects over the horizon</h3>
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-md"></div>
+                                    <div className="relative p-4 bg-gray-900/80 rounded-full border border-white/10">
+                                        <Rocket className="w-14 h-14 text-purple-400" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">More projects over the horizon</h3>
+                                    <p className="mt-2 text-lg text-gray-300">Have an idea? Let's collaborate to bring your vision to life!</p>
+                                </div>
                             </div>
-                            <p className="text-lg text-gray-300">Have an idea? Let's collaborate to bring your vision to life!</p>
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                className="shrink-0"
+                            >
+                                <Button 
+                                    size="lg"
+                                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full px-8 py-6 shadow-lg hover:shadow-xl font-medium"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'});
+                                    }}
+                                >
+                                    Get in Touch
+                                </Button>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>
@@ -489,8 +614,11 @@ const HomePage: React.FC = () => {
 
             {/* Team Section */}
             <section id="team" className="container mx-auto px-4 py-24 relative overflow-hidden">
-                <FloatingSVG bottom="10%" right="5%" delay={0.3}>
-                    <UserCircle2 className="w-24 h-24 text-pink-400/80" />
+                <FloatingSVG bottom="10%" right="5%" delay={0.3} size="lg">
+                    <UserCircle2 className="text-pink-400/80" />
+                </FloatingSVG>
+                <FloatingSVG top="15%" left="8%" delay={0.6} size="lg">
+                    <Users className="text-blue-400/80" />
                 </FloatingSVG>
                 <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
                     Our Team
@@ -504,7 +632,13 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section id="testimonials" className="bg-gray-900/90 backdrop-blur-md py-24">
+            <section id="testimonials" className="bg-gray-900/90 backdrop-blur-md py-24 relative overflow-hidden">
+                <FloatingSVG top="10%" right="8%" delay={0.4} size="lg">
+                    <Gem className="text-purple-400/80" />
+                </FloatingSVG>
+                <FloatingSVG bottom="15%" left="10%" delay={0.9} size="lg">
+                    <Cpu className="text-green-400/80" />
+                </FloatingSVG>
                 <div className="container mx-auto px-4">
                     <h2 className="text-4xl font-bold text-center text-white mb-16 font-heading">
                         What Our Clients Say
@@ -519,7 +653,13 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* FAQ Section */}
-            <section id="faq" className="bg-gray-950/50 backdrop-blur-md py-24 rounded-b-[4rem] border-b border-white/10">
+            <section id="faq" className="bg-gray-950/50 backdrop-blur-md py-24 rounded-b-[4rem] border-b border-white/10 relative overflow-hidden">
+                <FloatingSVG top="20%" right="10%" delay={0.7} size="lg">
+                    <BrainCircuit className="text-yellow-400/80" />
+                </FloatingSVG>
+                <FloatingSVG bottom="15%" left="8%" delay={1.1} size="lg">
+                    <Search className="text-blue-400/80" />
+                </FloatingSVG>
                 <div className="container mx-auto px-4">
                     <h2 className="text-4xl font-bold text-center text-white mb-16 font-heading">
                         Frequently Asked Questions
@@ -530,7 +670,8 @@ const HomePage: React.FC = () => {
                             <FaqItem 
                                 key={index} 
                                 faq={faq} 
-                                isOpen={index === 0} // Open the first FAQ by default
+                                isOpen={openFaqIndex === index}
+                                onToggle={() => toggleFaq(index)}
                             />
                         ))}
                     </div>
@@ -538,7 +679,13 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="container mx-auto px-4 py-24">
+            <section id="contact" className="container mx-auto px-4 py-24 relative overflow-hidden">
+                <FloatingSVG top="15%" right="10%" delay={0.5} size="lg">
+                    <Briefcase className="text-blue-400/80" />
+                </FloatingSVG>
+                <FloatingSVG bottom="20%" left="5%" delay={1.3} size="lg">
+                    <Zap className="text-purple-400/80" />
+                </FloatingSVG>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-16">
                     <ContactInfo />
                     <div className="w-full max-w-md">
@@ -548,7 +695,26 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gray-900/80 backdrop-blur-md py-16 mt-20 rounded-t-[3rem]">
+            <footer className="bg-gray-900/80 backdrop-blur-md py-16 mt-20 rounded-t-[3rem] relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+                    <motion.div 
+                        animate={{ 
+                            x: ["0%", "-50%"],
+                        }}
+                        transition={{ 
+                            repeat: Infinity,
+                            duration: 60,
+                            ease: "linear"
+                        }}
+                        className="whitespace-nowrap"
+                    >
+                        {Array.from({ length: 10 }).map((_, i) => (
+                            <span key={i} className="text-[20vw] font-black text-white/[0.02] tracking-tight select-none">
+                                KOSHILABS&nbsp;
+                            </span>
+                        ))}
+                    </motion.div>
+                </div>
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
                         {/* KoshiLabs Text */}
