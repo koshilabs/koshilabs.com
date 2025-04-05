@@ -12,16 +12,15 @@ interface FloatingSVGProps {
   opacity?: number;
   className?: string;
   animationDuration?: number;
-  animationScale?: boolean;
 }
 
+// Optimized version with simpler animations and less DOM elements
 const FloatingSVG: React.FC<FloatingSVGProps> = ({
   children,
   size = "md",
   opacity = 0.7,
   className = "",
   animationDuration = 10,
-  animationScale = true,
   ...props
 }) => {
   const sizeClasses = {
@@ -33,14 +32,14 @@ const FloatingSVG: React.FC<FloatingSVGProps> = ({
     "3xl": "w-80 h-80",
   };
 
+  // Simplified animation with fewer keyframes to reduce layout calculations
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20, x: -20 }}
+      initial={{ opacity: 0 }}
       animate={{
         opacity,
-        y: [0, -20, 0, 20, 0],
-        x: [0, 20, 0, -20, 0],
-        scale: animationScale ? [0.98, 1.02, 0.98] : 1,
+        y: [0, -10, 0, 10, 0], // Reduced movement range
+        x: [0, 10, 0, -10, 0], // Reduced movement range
       }}
       transition={{
         duration: animationDuration,

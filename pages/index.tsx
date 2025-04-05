@@ -37,6 +37,7 @@ import TeamMemberCard from "@/components/cards/TeamMemberCard";
 import FaqItem from "@/components/sections/FaqItem";
 import ContactInfo from "@/components/sections/ContactInfo";
 import ContactForm from "@/components/sections/ContactForm";
+import FloatingSVGGroup from "@/components/ui/FloatingSVGGroup";
 
 // Dummy data for products and services
 const products = [
@@ -497,24 +498,31 @@ const HomePage: React.FC = () => {
         id="home"
         className="container mx-auto px-6 lg:px-8 pt-32 pb-32 flex items-center justify-between relative overflow-hidden min-h-[90vh]"
       >
-        <FloatingSVG top="5%" left="20%" delay={0} size="lg" opacity={0.8}>
-          <Rocket className="text-blue-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="30%" right="15%" delay={2} size="md" opacity={0.7}>
-          <Zap className="text-yellow-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="15%" left="40%" delay={1} size="lg" opacity={0.8}>
-          <Wand2 className="text-purple-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="25%" right="30%" delay={1.5} size="sm" opacity={0.6}>
-          <Code2 className="text-green-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="15%" left="5%" delay={0.3} size="md" opacity={0.5}>
-          <Database className="text-red-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="60%" right="5%" delay={1.7} size="sm" opacity={0.6}>
-          <BrainCircuit className="text-purple-400/90" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <Rocket className="text-blue-400/90" />,
+              position: { top: "5%", left: "20%" },
+              size: "lg",
+              opacity: 0.8,
+              delay: 0
+            },
+            {
+              icon: <Zap className="text-yellow-400/90" />,
+              position: { top: "30%", right: "15%" },
+              size: "md",
+              opacity: 0.7,
+              delay: 2
+            },
+            {
+              icon: <Wand2 className="text-purple-400/90" />,
+              position: { bottom: "15%", left: "40%" },
+              size: "lg",
+              opacity: 0.8,
+              delay: 1
+            }
+          ]}
+        />
 
         <div className="max-w-xl relative z-10 text-left mx-4 md:mx-8 mt-8">
           <motion.h1
@@ -583,12 +591,11 @@ const HomePage: React.FC = () => {
             >
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-3xl"></div>
 
-              {/* Globe/World */}
+              {/* Simplified globe with fewer elements */}
               <div className="absolute inset-0 border-2 border-blue-400/40 rounded-full" />
-              <div className="absolute inset-[10%] border border-blue-400/30 rounded-full" />
               <div className="absolute inset-[20%] border border-blue-400/20 rounded-full" />
 
-              {/* Tech connection points */}
+              {/* Reduced number of tech points */}
               <motion.div
                 className="absolute top-[10%] left-[20%] w-4 h-4 bg-blue-400 rounded-full"
                 animate={{ scale: [1, 1.5, 1] }}
@@ -599,13 +606,8 @@ const HomePage: React.FC = () => {
                 animate={{ scale: [1, 1.8, 1] }}
                 transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
               />
-              <motion.div
-                className="absolute top-[30%] right-[15%] w-4 h-4 bg-green-400 rounded-full"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-              />
 
-              {/* Connection lines */}
+              {/* Reduced number of connection lines */}
               <motion.div
                 className="absolute top-[45%] left-[45%] w-[100%] h-[1.5px] bg-blue-400/40 origin-left"
                 style={{ rotate: -30 }}
@@ -618,14 +620,8 @@ const HomePage: React.FC = () => {
                 animate={{ opacity: [0.2, 0.5, 0.2] }}
                 transition={{ duration: 4, repeat: Infinity, delay: 1 }}
               />
-              <motion.div
-                className="absolute top-[45%] left-[45%] w-[80%] h-[1.5px] bg-green-400/40 origin-left"
-                style={{ rotate: 160 }}
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
-              />
 
-              {/* Tech icons */}
+              {/* Reduced number of tech icons */}
               <motion.div
                 className="absolute top-0 left-[45%] p-3 bg-gray-900/80 rounded-full border border-blue-400/30"
                 animate={{ y: [0, -8, 0] }}
@@ -640,13 +636,6 @@ const HomePage: React.FC = () => {
               >
                 <Cpu className="w-8 h-8 text-purple-400" />
               </motion.div>
-              <motion.div
-                className="absolute right-0 top-[40%] p-3 bg-gray-900/80 rounded-full border border-green-400/30"
-                animate={{ x: [0, 8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
-              >
-                <BrainCircuit className="w-8 h-8 text-green-400" />
-              </motion.div>
             </motion.div>
           </motion.div>
         </div>
@@ -657,36 +646,31 @@ const HomePage: React.FC = () => {
         id="about"
         className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
-        <FloatingSVG top="20%" right="15%" delay={0.3} size="xl" opacity={0.8}>
-          <Gem className="text-purple-400/90" />
-        </FloatingSVG>
-        <FloatingSVG
-          bottom="15%"
-          left="15%"
-          delay={0.7}
-          size="lg"
-          opacity={0.8}
-        >
-          <Rocket className="text-blue-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="40%" left="25%" delay={0.5} size="md" opacity={0.7}>
-          <BrainCircuit className="text-pink-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="30%" right="30%" delay={1.2} size="sm" opacity={0.6}>
-          <Cpu className="text-blue-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="8%" left="35%" delay={0.9} size="sm" opacity={0.5}>
-          <Layers3 className="text-green-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="50%" right="5%" delay={1.4} size="md" opacity={0.7}>
-          <Users className="text-yellow-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="60%" left="5%" delay={1.0} size="sm" opacity={0.5}>
-          <Search className="text-red-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="5%" right="40%" delay={0.5} size="md" opacity={0.6}>
-          <Briefcase className="text-purple-400/90" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <Gem className="text-purple-400/90" />,
+              position: { top: "20%", right: "15%" },
+              size: "xl",
+              opacity: 0.8,
+              delay: 0.3
+            },
+            {
+              icon: <Rocket className="text-blue-400/90" />,
+              position: { bottom: "15%", left: "15%" },
+              size: "lg",
+              opacity: 0.8,
+              delay: 0.7
+            },
+            {
+              icon: <BrainCircuit className="text-pink-400/90" />,
+              position: { top: "40%", left: "25%" },
+              size: "md",
+              opacity: 0.7,
+              delay: 0.5
+            }
+          ]}
+        />
 
         <div className="flex flex-col lg:flex-row items-center gap-16 relative z-10">
           <motion.div
@@ -849,33 +833,31 @@ const HomePage: React.FC = () => {
         id="services"
         className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden"
       >
-        <FloatingSVG top="10%" left="5%" delay={0.5} size="xl" opacity={0.7}>
-          <Cpu className="text-blue-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="20%" right="5%" delay={0.9} size="lg" opacity={0.7}>
-          <Code2 className="text-purple-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="40%" left="30%" delay={1.3} size="md" opacity={0.6}>
-          <Layers3 className="text-green-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="30%" right="25%" delay={0.7} size="sm" opacity={0.6}>
-          <Search className="text-yellow-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="20%" left="35%" delay={1.5} size="sm" opacity={0.5}>
-          <Briefcase className="text-red-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="15%" left="15%" delay={1.1} size="md" opacity={0.6}>
-          <Wand2 className="text-purple-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="5%" right="40%" delay={0.3} size="sm" opacity={0.5}>
-          <TrendingUp className="text-blue-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="10%" right="30%" delay={1.7} size="sm" opacity={0.6}>
-          <Database className="text-pink-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="35%" left="10%" delay={0.8} size="md" opacity={0.7}>
-          <Gem className="text-green-400/80" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <Cpu className="text-blue-400/80" />,
+              position: { top: "10%", left: "5%" },
+              size: "xl",
+              opacity: 0.7,
+              delay: 0.5
+            },
+            {
+              icon: <Code2 className="text-purple-400/80" />,
+              position: { bottom: "20%", right: "5%" },
+              size: "lg",
+              opacity: 0.7,
+              delay: 0.9
+            },
+            {
+              icon: <Layers3 className="text-green-400/80" />,
+              position: { bottom: "40%", left: "30%" },
+              size: "md",
+              opacity: 0.6,
+              delay: 1.3
+            }
+          ]}
+        />
         
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Services
@@ -893,33 +875,31 @@ const HomePage: React.FC = () => {
         id="products"
         className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10"
       >
-        <FloatingSVG top="15%" left="5%" delay={0.8} size="lg">
-          <Boxes className="text-orange-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="25%" right="8%" delay={1.2} size="lg">
-          <Database className="text-purple-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="40%" right="20%" delay={0.6} size="md">
-          <Wand2 className="text-pink-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="15%" left="25%" delay={1} size="sm">
-          <Layers3 className="text-blue-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="5%" right="30%" delay={0.4} size="md">
-          <Gem className="text-green-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="35%" left="10%" delay={1.4} size="sm">
-          <Search className="text-yellow-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="30%" left="40%" delay={0.9} size="md">
-          <TrendingUp className="text-red-400/80" />
-        </FloatingSVG>
-        <FloatingSVG bottom="5%" right="15%" delay={1.6} size="sm">
-          <Code2 className="text-blue-400/80" />
-        </FloatingSVG>
-        <FloatingSVG top="20%" left="20%" delay={0.7} size="sm">
-          <Cpu className="text-purple-400/80" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <Boxes className="text-orange-400/80" />,
+              position: { top: "15%", left: "5%" },
+              size: "lg",
+              opacity: 0.7,
+              delay: 0.8
+            },
+            {
+              icon: <Database className="text-purple-400/80" />,
+              position: { bottom: "25%", right: "8%" },
+              size: "lg",
+              opacity: 0.7,
+              delay: 1.2
+            },
+            {
+              icon: <Wand2 className="text-pink-400/80" />,
+              position: { top: "40%", right: "20%" },
+              size: "md",
+              opacity: 0.7,
+              delay: 0.6
+            }
+          ]}
+        />
         
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Products
@@ -988,33 +968,24 @@ const HomePage: React.FC = () => {
         id="team"
         className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
-        <FloatingSVG
-          bottom="10%"
-          right="5%"
-          delay={0.3}
-          size="xl"
-          opacity={0.8}
-        >
-          <UserCircle2 className="text-pink-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="15%" left="8%" delay={0.6} size="xl" opacity={0.8}>
-          <Users className="text-blue-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="25%" right="20%" delay={0.8} size="md" opacity={0.7}>
-          <BrainCircuit className="text-green-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="30%" left="25%" delay={1.1} size="sm" opacity={0.6}>
-          <Rocket className="text-orange-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="5%" right="40%" delay={0.4} size="sm" opacity={0.6}>
-          <Laptop2 className="text-purple-400/90" />
-        </FloatingSVG>
-        <FloatingSVG bottom="20%" left="45%" delay={1.3} size="md" opacity={0.7}>
-          <Cpu className="text-blue-400/90" />
-        </FloatingSVG>
-        <FloatingSVG top="35%" left="35%" delay={0.9} size="sm" opacity={0.5}>
-          <Code2 className="text-red-400/90" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <UserCircle2 className="text-pink-400/90" />,
+              position: { bottom: "10%", right: "5%" },
+              size: "xl",
+              opacity: 0.8,
+              delay: 0.3
+            },
+            {
+              icon: <Users className="text-blue-400/90" />,
+              position: { top: "15%", left: "8%" },
+              size: "xl",
+              opacity: 0.8,
+              delay: 0.6
+            }
+          ]}
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1044,24 +1015,24 @@ const HomePage: React.FC = () => {
       {/* Testimonials */}
       <section id="testimonials" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <FloatingSVG top="10%" right="5%" delay={0.3} size="lg">
-            <Users className="text-purple-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="15%" left="8%" delay={0.5} size="md">
-            <Gem className="text-blue-400/80" />
-          </FloatingSVG>
-          <FloatingSVG top="40%" left="20%" delay={0.7} size="sm">
-            <TrendingUp className="text-green-400/80" />
-          </FloatingSVG>
-          <FloatingSVG top="20%" right="30%" delay={0.2} size="md">
-            <Briefcase className="text-yellow-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="30%" right="15%" delay={0.9} size="sm">
-            <Zap className="text-pink-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="40%" left="35%" delay={1.1} size="sm">
-            <BrainCircuit className="text-orange-400/80" />
-          </FloatingSVG>
+          <FloatingSVGGroup 
+            elements={[
+              {
+                icon: <Users className="text-purple-400/80" />,
+                position: { top: "10%", right: "5%" },
+                size: "lg",
+                opacity: 0.7,
+                delay: 0.3
+              },
+              {
+                icon: <Gem className="text-blue-400/80" />,
+                position: { bottom: "15%", left: "8%" },
+                size: "md",
+                opacity: 0.7,
+                delay: 0.5
+              }
+            ]}
+          />
 
           <motion.div
             variants={fadeInVariants}
@@ -1096,24 +1067,24 @@ const HomePage: React.FC = () => {
         className="bg-gray-950/50 backdrop-blur-md py-24 rounded-b-[4rem] border-b border-white/10 relative overflow-hidden"
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <FloatingSVG top="20%" right="10%" delay={0.7} size="xl" opacity={0.8}>
-            <Boxes className="text-blue-400/90" />
-          </FloatingSVG>
-          <FloatingSVG bottom="25%" left="10%" delay={0.4} size="lg" opacity={0.7}>
-            <Search className="text-purple-400/90" />
-          </FloatingSVG>
-          <FloatingSVG top="40%" left="25%" delay={0.9} size="md" opacity={0.6}>
-            <BrainCircuit className="text-pink-400/90" />
-          </FloatingSVG>
-          <FloatingSVG bottom="15%" right="25%" delay={0.2} size="md" opacity={0.6}>
-            <Laptop2 className="text-green-400/90" />
-          </FloatingSVG>
-          <FloatingSVG top="10%" left="40%" delay={0.5} size="sm" opacity={0.5}>
-            <Database className="text-yellow-400/90" />
-          </FloatingSVG>
-          <FloatingSVG bottom="40%" right="40%" delay={1.1} size="sm" opacity={0.6}>
-            <Cpu className="text-red-400/90" />
-          </FloatingSVG>
+          <FloatingSVGGroup 
+            elements={[
+              {
+                icon: <Boxes className="text-blue-400/90" />,
+                position: { top: "20%", right: "10%" },
+                size: "xl",
+                opacity: 0.8,
+                delay: 0.7
+              },
+              {
+                icon: <Search className="text-purple-400/90" />,
+                position: { bottom: "25%", left: "10%" },
+                size: "lg",
+                opacity: 0.7,
+                delay: 0.4
+              }
+            ]}
+          />
 
           <motion.div
             variants={fadeInVariants}
@@ -1148,27 +1119,24 @@ const HomePage: React.FC = () => {
       {/* Contact Section */}
       <section id="contact" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
-          <FloatingSVG top="15%" right="10%" delay={0.5} size="lg">
-            <Briefcase className="text-blue-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="10%" left="5%" delay={0.7} size="md">
-            <Laptop2 className="text-purple-500/80" />
-          </FloatingSVG>
-          <FloatingSVG top="30%" left="20%" delay={0.9} size="sm">
-            <Code2 className="text-green-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="25%" right="25%" delay={0.3} size="sm">
-            <TrendingUp className="text-orange-400/80" />
-          </FloatingSVG>
-          <FloatingSVG top="10%" left="40%" delay={0.6} size="md">
-            <Database className="text-yellow-400/80" />
-          </FloatingSVG>
-          <FloatingSVG bottom="20%" right="15%" delay={1.1} size="sm">
-            <Zap className="text-pink-400/80" />
-          </FloatingSVG>
-          <FloatingSVG top="40%" right="35%" delay={0.8} size="sm">
-            <Gem className="text-blue-400/80" />
-          </FloatingSVG>
+          <FloatingSVGGroup 
+            elements={[
+              {
+                icon: <Briefcase className="text-blue-400/80" />,
+                position: { top: "15%", right: "10%" },
+                size: "lg",
+                opacity: 0.7,
+                delay: 0.5
+              },
+              {
+                icon: <Laptop2 className="text-purple-500/80" />,
+                position: { bottom: "10%", left: "5%" },
+                size: "md",
+                opacity: 0.7,
+                delay: 0.7
+              }
+            ]}
+          />
 
           <motion.div
             variants={fadeInVariants}
@@ -1212,7 +1180,7 @@ const HomePage: React.FC = () => {
             }}
             className="whitespace-nowrap"
           >
-            {Array.from({ length: 10 }).map((_, i) => (
+            {Array.from({ length: 5 }).map((_, i) => (
               <span
                 key={i}
                 className="text-[20vw] font-black text-white/[0.02] tracking-tight select-none"
@@ -1223,15 +1191,18 @@ const HomePage: React.FC = () => {
           </motion.div>
         </div>
         
-        <FloatingSVG bottom="60%" left="5%" delay={0.3} size="md" opacity={0.3}>
-          <Rocket className="text-blue-400/60" />
-        </FloatingSVG>
-        <FloatingSVG top="30%" right="8%" delay={0.7} size="md" opacity={0.3}>
-          <BrainCircuit className="text-purple-400/60" />
-        </FloatingSVG>
-        <FloatingSVG bottom="30%" left="40%" delay={0.5} size="sm" opacity={0.3}>
-          <Code2 className="text-green-400/60" />
-        </FloatingSVG>
+        <FloatingSVGGroup 
+          elements={[
+            {
+              icon: <Rocket className="text-blue-400/60" />,
+              position: { bottom: "60%", left: "5%" },
+              size: "md",
+              opacity: 0.3,
+              delay: 0.3
+            }
+          ]}
+          maxElements={1}
+        />
         
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
