@@ -44,6 +44,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => (
             <img
               src={testimonial.image}
               alt={testimonial.name}
+              loading="lazy"
               className="relative w-16 h-16 rounded-full border-2 border-white/20 object-cover"
             />
           </div>

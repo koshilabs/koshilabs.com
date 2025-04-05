@@ -37,11 +37,16 @@ const TeamMemberCard: React.FC<TeamMemberProps> = ({ member }) => {
             <img
               src={member.image}
               alt={member.name}
+              loading="lazy"
+              height={128}
+              width={128}
               className="w-full h-full object-cover rounded-full bg-gray-800"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
-                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`;
+                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                  member.name
+                )}&background=random`;
               }}
             />
           </div>
