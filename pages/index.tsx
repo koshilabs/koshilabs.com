@@ -23,7 +23,10 @@ import {
   Twitter,
   Linkedin,
   Github,
-  Instagram
+  Instagram,
+  MapPin,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -309,21 +312,24 @@ const testimonials = [
     company: "Acme Corp",
     quote:
       "Their team delivered our project on time and within budget.  Highly recommended!  Their communication was excellent.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JohnSmith&style=circle&backgroundColor=ffaabb",
+    image:
+      "https://api.dicebear.com/7.x/avataaars/svg?seed=JohnSmith&style=circle&backgroundColor=ffaabb",
   },
   {
     name: "Jane Doe",
     company: "Beta Inc",
     quote:
       "We've been working with them for years and they consistently exceed our expectations.  A true partner in our success.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JaneDoe&style=circle&backgroundColor=aabbff",
+    image:
+      "https://api.dicebear.com/7.x/avataaars/svg?seed=JaneDoe&style=circle&backgroundColor=aabbff",
   },
   {
     name: "David Lee",
     company: "Gamma Co",
     quote:
       "Their expertise in AI helped us transform our business.  A game-changer for our operations.  We're seeing significant ROI.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=DavidLee&style=circle&backgroundColor=bbffaa",
+    image:
+      "https://api.dicebear.com/7.x/avataaars/svg?seed=DavidLee&style=circle&backgroundColor=bbffaa",
   },
 ];
 
@@ -441,17 +447,20 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     // Add event listeners to all anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
+    anchorLinks.forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
         e.preventDefault();
-        const href = anchor.getAttribute('href');
+        const href = anchor.getAttribute("href");
         if (href) {
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
             const yOffset = -80; // Offset for fixed header
-            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({top: y, behavior: 'auto'});
+            const y =
+              targetElement.getBoundingClientRect().top +
+              window.pageYOffset +
+              yOffset;
+            window.scrollTo({ top: y, behavior: "auto" });
           }
         }
       });
@@ -459,8 +468,8 @@ const HomePage: React.FC = () => {
 
     // Clean up
     return () => {
-      anchorLinks.forEach(anchor => {
-        anchor.removeEventListener('click', () => {});
+      anchorLinks.forEach((anchor) => {
+        anchor.removeEventListener("click", () => {});
       });
     };
   }, []);
@@ -498,29 +507,29 @@ const HomePage: React.FC = () => {
         id="home"
         className="container mx-auto px-6 lg:px-8 pt-32 pb-32 flex items-center justify-between relative overflow-hidden min-h-[90vh]"
       >
-        <FloatingSVGGroup 
+        <FloatingSVGGroup
           elements={[
             {
               icon: <Rocket className="text-blue-400/90" />,
               position: { top: "5%", left: "20%" },
               size: "lg",
               opacity: 0.8,
-              delay: 0
+              delay: 0,
             },
             {
               icon: <Zap className="text-yellow-400/90" />,
               position: { top: "30%", right: "15%" },
               size: "md",
               opacity: 0.7,
-              delay: 2
+              delay: 2,
             },
             {
               icon: <Wand2 className="text-purple-400/90" />,
               position: { bottom: "15%", left: "40%" },
               size: "lg",
               opacity: 0.8,
-              delay: 1
-            }
+              delay: 1,
+            },
           ]}
         />
 
@@ -560,8 +569,11 @@ const HomePage: React.FC = () => {
                   const targetElement = document.getElementById("about");
                   if (targetElement) {
                     const yOffset = -80;
-                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({top: y, behavior: 'auto'});
+                    const y =
+                      targetElement.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "auto" });
                   }
                 }}
               >
@@ -571,6 +583,7 @@ const HomePage: React.FC = () => {
           </motion.div>
         </div>
 
+        {/* Hero section globe - Only render on desktop screens, not on mobile */}
         <div className="hidden md:block w-1/2 relative mx-4">
           <motion.div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-8"
@@ -578,6 +591,8 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
+            {/* This entire globe component will only render on md screens and above */}
+            {/* The hidden md:block class on the parent div ensures it's never in the DOM on mobile */}
             <motion.div
               className="relative w-[450px] h-[450px]"
               animate={{
@@ -639,6 +654,19 @@ const HomePage: React.FC = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Mobile Hero Section */}
+        <div className="block md:hidden w-full mt-8">
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full p-5 w-32 h-32 flex items-center justify-center"
+            >
+              <Rocket className="w-16 h-16 text-blue-400/90" />
+            </motion.div>
+          </div>
+        </div>
       </header>
 
       {/* About Us Section */}
@@ -646,29 +674,29 @@ const HomePage: React.FC = () => {
         id="about"
         className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
-        <FloatingSVGGroup 
+        <FloatingSVGGroup
           elements={[
             {
               icon: <Gem className="text-purple-400/90" />,
               position: { top: "20%", right: "15%" },
               size: "xl",
               opacity: 0.8,
-              delay: 0.3
+              delay: 0.3,
             },
             {
               icon: <Rocket className="text-blue-400/90" />,
               position: { bottom: "15%", left: "15%" },
               size: "lg",
               opacity: 0.8,
-              delay: 0.7
+              delay: 0.7,
             },
             {
               icon: <BrainCircuit className="text-pink-400/90" />,
               position: { top: "40%", left: "25%" },
               size: "md",
               opacity: 0.7,
-              delay: 0.5
-            }
+              delay: 0.5,
+            },
           ]}
         />
 
@@ -735,8 +763,11 @@ const HomePage: React.FC = () => {
                     const targetElement = document.getElementById("services");
                     if (targetElement) {
                       const yOffset = -80;
-                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                      window.scrollTo({top: y, behavior: 'auto'});
+                      const y =
+                        targetElement.getBoundingClientRect().top +
+                        window.pageYOffset +
+                        yOffset;
+                      window.scrollTo({ top: y, behavior: "auto" });
                     }
                   }}
                 >
@@ -761,60 +792,60 @@ const HomePage: React.FC = () => {
                 </h3>
 
                 <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                      <Zap className="w-6 h-6 text-blue-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-500/20 rounded-full p-2 mt-1">
+                      <Zap className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Unwavering Commitment to Quality
                       </h4>
-                      <p className="text-gray-300 mt-2">
+                      <p className="text-gray-300 mt-1">
                         We go above and beyond to deliver software that exceeds
                         your expectations.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                      <BrainCircuit className="w-6 h-6 text-purple-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-purple-500/20 rounded-full p-2 mt-1">
+                      <BrainCircuit className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Affordable Excellence
                       </h4>
-                      <p className="text-gray-300 mt-2">
+                      <p className="text-gray-300 mt-1">
                         High-quality software doesn't have to break the bank. We
                         offer competitive pricing without compromising quality.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                      <Gem className="w-6 h-6 text-green-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-green-500/20 rounded-full p-2 mt-1">
+                      <Gem className="w-5 h-5 text-green-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Local Expertise, Global Standards
                       </h4>
-                      <p className="text-gray-300 mt-2">
+                      <p className="text-gray-300 mt-1">
                         We understand unique market challenges and apply global
                         best practices to deliver impactful solutions.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center">
-                      <Users className="w-6 h-6 text-yellow-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-yellow-500/20 rounded-full p-2 mt-1">
+                      <Users className="w-5 h-5 text-yellow-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Dedicated Support
                       </h4>
-                      <p className="text-gray-300 mt-2">
+                      <p className="text-gray-300 mt-1">
                         We're more than just developers; we're your partners. We
                         provide ongoing support to ensure your software meets
                         evolving needs.
@@ -833,32 +864,32 @@ const HomePage: React.FC = () => {
         id="services"
         className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden"
       >
-        <FloatingSVGGroup 
+        <FloatingSVGGroup
           elements={[
             {
               icon: <Cpu className="text-blue-400/80" />,
               position: { top: "10%", left: "5%" },
               size: "xl",
               opacity: 0.7,
-              delay: 0.5
+              delay: 0.5,
             },
             {
               icon: <Code2 className="text-purple-400/80" />,
               position: { bottom: "20%", right: "5%" },
               size: "lg",
               opacity: 0.7,
-              delay: 0.9
+              delay: 0.9,
             },
             {
               icon: <Layers3 className="text-green-400/80" />,
               position: { bottom: "40%", left: "30%" },
               size: "md",
               opacity: 0.6,
-              delay: 1.3
-            }
+              delay: 1.3,
+            },
           ]}
         />
-        
+
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Services
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -875,32 +906,32 @@ const HomePage: React.FC = () => {
         id="products"
         className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10"
       >
-        <FloatingSVGGroup 
+        <FloatingSVGGroup
           elements={[
             {
               icon: <Boxes className="text-orange-400/80" />,
               position: { top: "15%", left: "5%" },
               size: "lg",
               opacity: 0.7,
-              delay: 0.8
+              delay: 0.8,
             },
             {
               icon: <Database className="text-purple-400/80" />,
               position: { bottom: "25%", right: "8%" },
               size: "lg",
               opacity: 0.7,
-              delay: 1.2
+              delay: 1.2,
             },
             {
               icon: <Wand2 className="text-pink-400/80" />,
               position: { top: "40%", right: "20%" },
               size: "md",
               opacity: 0.7,
-              delay: 0.6
-            }
+              delay: 0.6,
+            },
           ]}
         />
-        
+
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Products
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -950,8 +981,11 @@ const HomePage: React.FC = () => {
                     const targetElement = document.getElementById("contact");
                     if (targetElement) {
                       const yOffset = -80;
-                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                      window.scrollTo({top: y, behavior: 'auto'});
+                      const y =
+                        targetElement.getBoundingClientRect().top +
+                        window.pageYOffset +
+                        yOffset;
+                      window.scrollTo({ top: y, behavior: "auto" });
                     }
                   }}
                 >
@@ -968,22 +1002,22 @@ const HomePage: React.FC = () => {
         id="team"
         className="container mx-auto px-6 lg:px-8 py-36 relative overflow-hidden"
       >
-        <FloatingSVGGroup 
+        <FloatingSVGGroup
           elements={[
             {
               icon: <UserCircle2 className="text-pink-400/90" />,
               position: { bottom: "10%", right: "5%" },
               size: "xl",
               opacity: 0.8,
-              delay: 0.3
+              delay: 0.3,
             },
             {
               icon: <Users className="text-blue-400/90" />,
               position: { top: "15%", left: "8%" },
               size: "xl",
               opacity: 0.8,
-              delay: 0.6
-            }
+              delay: 0.6,
+            },
           ]}
         />
 
@@ -1015,22 +1049,22 @@ const HomePage: React.FC = () => {
       {/* Testimonials */}
       <section id="testimonials" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <FloatingSVGGroup 
+          <FloatingSVGGroup
             elements={[
               {
                 icon: <Users className="text-purple-400/80" />,
                 position: { top: "10%", right: "5%" },
                 size: "lg",
                 opacity: 0.7,
-                delay: 0.3
+                delay: 0.3,
               },
               {
                 icon: <Gem className="text-blue-400/80" />,
                 position: { bottom: "15%", left: "8%" },
                 size: "md",
                 opacity: 0.7,
-                delay: 0.5
-              }
+                delay: 0.5,
+              },
             ]}
           />
 
@@ -1067,22 +1101,22 @@ const HomePage: React.FC = () => {
         className="bg-gray-950/50 backdrop-blur-md py-24 rounded-b-[4rem] border-b border-white/10 relative overflow-hidden"
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <FloatingSVGGroup 
+          <FloatingSVGGroup
             elements={[
               {
                 icon: <Boxes className="text-blue-400/90" />,
                 position: { top: "20%", right: "10%" },
                 size: "xl",
                 opacity: 0.8,
-                delay: 0.7
+                delay: 0.7,
               },
               {
                 icon: <Search className="text-purple-400/90" />,
                 position: { bottom: "25%", left: "10%" },
                 size: "lg",
                 opacity: 0.7,
-                delay: 0.4
-              }
+                delay: 0.4,
+              },
             ]}
           />
 
@@ -1119,22 +1153,22 @@ const HomePage: React.FC = () => {
       {/* Contact Section */}
       <section id="contact" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
-          <FloatingSVGGroup 
+          <FloatingSVGGroup
             elements={[
               {
                 icon: <Briefcase className="text-blue-400/80" />,
                 position: { top: "15%", right: "10%" },
                 size: "lg",
                 opacity: 0.7,
-                delay: 0.5
+                delay: 0.5,
               },
               {
                 icon: <Laptop2 className="text-purple-500/80" />,
                 position: { bottom: "10%", left: "5%" },
                 size: "md",
                 opacity: 0.7,
-                delay: 0.7
-              }
+                delay: 0.7,
+              },
             ]}
           />
 
@@ -1166,9 +1200,9 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - Enhanced with animated background text */}
       <footer className="bg-gray-900/80 backdrop-blur-md py-16 mt-20 rounded-t-[3rem] relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
               x: ["0%", "-50%"],
@@ -1190,33 +1224,95 @@ const HomePage: React.FC = () => {
             ))}
           </motion.div>
         </div>
-        
-        <FloatingSVGGroup 
+
+        <FloatingSVGGroup
           elements={[
             {
               icon: <Rocket className="text-blue-400/60" />,
               position: { bottom: "60%", left: "5%" },
               size: "md",
               opacity: 0.3,
-              delay: 0.3
-            }
+              delay: 0.3,
+            },
+            {
+              icon: <BrainCircuit className="text-purple-400/60" />,
+              position: { top: "30%", right: "8%" },
+              size: "md",
+              opacity: 0.3,
+              delay: 0.7,
+            },
           ]}
-          maxElements={1}
+          maxElements={2}
         />
-        
+
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
             {/* KoshiLabs Text */}
             <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start mb-4">
-                <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter inline-block">
+              <motion.div
+                className="flex items-center justify-center md:justify-start mb-4"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <motion.span
+                  className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter inline-block relative"
+                  animate={{
+                    textShadow: [
+                      "0 0 5px rgba(96, 165, 250, 0)",
+                      "0 0 15px rgba(96, 165, 250, 0.5)",
+                      "0 0 5px rgba(96, 165, 250, 0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
                   Koshi<span className="font-light">Labs</span>
-                </span>
-              </div>
-              <p className="mt-4 text-gray-400 max-w-xs">
+                  <motion.div
+                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileHover={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.span>
+              </motion.div>
+              <p className="mt-2 text-gray-400 max-w-xs">
                 Delivering innovative software solutions and services to
                 businesses worldwide.
               </p>
+
+              <motion.div
+                className="flex justify-center md:justify-start space-x-6 mt-6"
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 1 }}
+              >
+                <motion.a
+                  href="https://www.facebook.com/koshilabs"
+                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  whileHover={{ y: -3, scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Facebook className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://x.com/koshilabs"
+                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  whileHover={{ y: -3, scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Twitter className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://www.linkedin.com/company/koshilabs"
+                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  whileHover={{ y: -3, scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Linkedin className="w-5 h-5" />
+                </motion.a>
+              </motion.div>
             </div>
 
             {/* Quick Links */}
@@ -1225,97 +1321,75 @@ const HomePage: React.FC = () => {
                 Quick Links
               </h4>
               <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                <a
-                  href="#home"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Home
-                </a>
-                <a
-                  href="#services"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Services
-                </a>
-                <a
-                  href="#products"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Products
-                </a>
-                <a
-                  href="#team"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Our Team
-                </a>
-                <a
-                  href="#testimonials"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Testimonials
-                </a>
-                <a
-                  href="#faq"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  FAQ
-                </a>
-                <a
-                  href="#contact"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Contact Us
-                </a>
-                <a
-                  href="mailto:koshilabs@gmail.com"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Email Us
-                </a>
+                {[
+                  { text: "Home", href: "#home" },
+                  { text: "Services", href: "#services" },
+                  { text: "Products", href: "#products" },
+                  { text: "Team", href: "#team" },
+                  { text: "Testimonials", href: "#testimonials" },
+                  { text: "FAQ", href: "#faq" },
+                  { text: "Contact Us", href: "#contact" },
+                  { text: "Email Us", href: "mailto:koshilabs@gmail.com" },
+                ].map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                    whileHover={{ x: 5, color: "#60A5FA" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    {link.text}
+                  </motion.a>
+                ))}
               </div>
             </div>
 
-            {/* Social & Copyright */}
+            {/* Contact & Copyright */}
             <div className="text-center md:text-right">
               <h4 className="text-xl font-semibold text-white mb-6">
-                Connect With Us
+                Contact Information
               </h4>
-              <div className="flex justify-center md:justify-end space-x-6 mb-8">
-                <a
-                  href="https://www.facebook.com/koshilabs"
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  <Facebook className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://x.com/koshilabs"
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  <Twitter className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/koshilabs"
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://github.com/koshilabs"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://www.instagram.com/koshilabs"
-                  className="text-gray-400 hover:text-pink-400 transition-colors"
-                >
-                  <Instagram className="w-6 h-6" />
-                </a>
-              </div>
-              <div className="text-gray-400 text-lg">
+              <motion.div
+                className="space-y-3 text-gray-400"
+                whileHover={{ opacity: 1 }}
+                initial={{ opacity: 0.9 }}
+              >
+                <div className="flex items-center justify-center md:justify-end gap-2">
+                  <MapPin className="w-4 h-4 text-blue-400" />
+                  <span>Birtamod, Koshi Province, Nepal</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-end gap-2">
+                  <Phone className="w-4 h-4 text-blue-400" />
+                  <span>
+                    <a
+                      href="tel:+977 9817996672"
+                      aria-label="Call +977 9817996672"
+                    >
+                      +977 9817996672
+                    </a>
+                  </span>
+                </div>
+                <div className="flex items-center justify-center md:justify-end gap-2">
+                  <Mail className="w-4 h-4 text-blue-400" />
+                  <span>
+                    <a
+                      href="mailto:admin@koshilabs.com"
+                      aria-label="Email admin@koshilabs.com"
+                    >
+                      admin@koshilabs.com
+                    </a>
+                  </span>
+                </div>
+              </motion.div>
+
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-6" />
+
+              <motion.div
+                className="text-gray-400 text-sm"
+                whileHover={{ color: "#60A5FA" }}
+              >
                 © {new Date().getFullYear()} KoshiLabs. All rights reserved.
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

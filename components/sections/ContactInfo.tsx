@@ -1,40 +1,50 @@
 import React from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Clock } from "lucide-react";
 
-const ContactInfo: React.FC = () => (
-  <div className="space-y-8">
-    <h3 className="text-4xl font-semibold text-white">Contact Us</h3>
-    <div className="space-y-4">
-      <div className="flex items-center gap-4">
-        <MapPin className="w-7 h-7 text-gray-400" />
-        <p className="text-gray-300 text-xl">Birtamod, Koshi Province, Nepal</p>
+// Simplified contact info component with fewer DOM elements
+const ContactInfo = () => {
+  return (
+    <div className="space-y-8 text-gray-300">
+      <h3 className="text-2xl font-semibold text-white mb-6">
+        Contact Information
+      </h3>
+      <div className="flex items-start gap-3">
+        <MapPin className="w-5 h-5 text-blue-400 mt-1" />
+        <div>
+          <p className="font-medium text-white">Address</p>
+          <p>Birtamod, Koshi Province, Nepal</p>
+        </div>
       </div>
-      <div className="flex items-center gap-4">
-        <Phone className="w-7 h-7 text-gray-400" />
-        <a href="tel:+977-9817996672" className="text-gray-300 text-xl">
-          +977 9817996672
-        </a>
+      <div className="flex items-start gap-3">
+        <Phone className="w-5 h-5 text-purple-400 mt-1" />
+        <div>
+          <p className="font-medium text-white">Phone</p>
+          <a href="tel:+977 9817996672" aria-label="Call +977 9817996672">
+            +977 9817996672
+          </a>
+        </div>
       </div>
-      <div className="flex items-center gap-4">
-        <Mail className="w-7 h-7 text-gray-400" />
-        <a
-          href="mailto:admin@koshilabs.com"
-          className="text-gray-300 hover:text-blue-400 text-xl transition-colors"
-        >
-          admin@koshilabs.com
-        </a>
+      <div className="flex items-start gap-3">
+        <Mail className="w-5 h-5 text-green-400 mt-1" />
+        <div>
+          <p className="font-medium text-white">Email</p>
+          <a
+            href="mailto:admin@koshilabs.com"
+            aria-label="Email admin@koshilabs.com"
+          >
+            admin@koshilabs.com
+          </a>
+        </div>
       </div>
-      <div className="flex items-center gap-4">
-        <Mail className="w-7 h-7 text-gray-400" />
-        <a
-          href="mailto:koshilabs@gmail.com"
-          className="text-gray-300 hover:text-blue-400 text-xl transition-colors"
-        >
-          koshilabs@gmail.com
-        </a>
+      <div className="flex items-start gap-3">
+        <Globe className="w-5 h-5 text-yellow-400 mt-1" />
+        <div>
+          <p className="font-medium text-white">Website</p>
+          <p>www.koshilabs.com</p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ContactInfo;

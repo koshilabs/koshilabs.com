@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
@@ -8,234 +8,95 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  children: React.ReactNode;
   icon?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   title,
-  children,
   icon,
+  children,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsMounted(true);
-
+    // Prevent body scrolling when modal is open
     if (isOpen) {
       document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
     }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
-  // Handle ESC key press
-  useEffect(() => {
+    // Handle ESC key press
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+
+    // Handle clicks outside modal
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
         onClose();
       }
     };
 
     if (isOpen) {
-      window.addEventListener("keydown", handleEsc);
+      document.addEventListener("keydown", handleEsc);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "unset";
+      document.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
-
-  // Handle click outside to close
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
-  if (!isMounted) return null;
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-6"
-          onClick={handleBackdropClick}
-        >
+        <div className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center p-4">
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{
-              duration: 0.25,
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-            }}
-            className="w-full max-w-5xl max-h-[85vh] overflow-hidden flex flex-col md:flex-row rounded-2xl shadow-[0_20px_70px_-10px_rgba(0,0,0,0.3)] border border-white/10 relative"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={onClose}
+          />
+
+          <motion.div
+            ref={modalRef}
+            className="bg-gray-900 w-full max-w-2xl rounded-xl overflow-hidden shadow-2xl relative z-10"
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
-            {/* Left content section */}
-            <div className="flex-1 relative z-10 bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-8 md:p-10 overflow-y-auto rounded-l-2xl">
-              {/* Header */}
-              <div className="relative mb-8 pb-6 border-b border-white/10">
-                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                  {title}
-                </h3>
-                <div className="absolute w-20 h-1 bottom-0 left-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            <div className="relative p-6 border-b border-gray-800">
+              <div className="flex items-center gap-4">
+                {icon && (
+                  <div className="p-3 bg-gray-800 rounded-xl border border-gray-700">
+                    {icon}
+                  </div>
+                )}
+                <h3 className="text-2xl font-bold text-white pr-8">{title}</h3>
               </div>
 
-              {/* Content */}
-              <div className="prose prose-invert prose-lg prose-p:text-gray-300 max-w-none rounded-2xl overflow-hidden">
-                {children}
-              </div>
+              <button
+                onClick={onClose}
+                className="absolute right-6 top-6 p-2 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Right illustration section */}
-            {icon && (
-              <div className="hidden md:block md:w-2/5 bg-gradient-to-br from-gray-800/80 to-gray-900/90 relative overflow-hidden rounded-r-2xl">
-                {/* Background decorative elements */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
-                <div className="absolute -left-24 top-40 w-52 h-52 bg-blue-500/10 rounded-full blur-[50px]"></div>
-                <div className="absolute -right-24 bottom-40 w-60 h-60 bg-purple-500/10 rounded-full blur-[50px]"></div>
-
-                {/* Tech connections visual effect */}
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-5"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  <line
-                    x1="0"
-                    y1="0"
-                    x2="100"
-                    y2="100"
-                    stroke="white"
-                    strokeWidth="0.5"
-                  />
-                  <line
-                    x1="100"
-                    y1="0"
-                    x2="0"
-                    y2="100"
-                    stroke="white"
-                    strokeWidth="0.5"
-                  />
-                  <line
-                    x1="50"
-                    y1="0"
-                    x2="50"
-                    y2="100"
-                    stroke="white"
-                    strokeWidth="0.5"
-                  />
-                  <line
-                    x1="0"
-                    y1="50"
-                    x2="100"
-                    y2="50"
-                    stroke="white"
-                    strokeWidth="0.5"
-                  />
-                </svg>
-
-                {/* Main floating icon */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: [0, -15, 0, 15, 0],
-                  }}
-                  transition={{
-                    opacity: { duration: 0.5 },
-                    scale: { duration: 0.5 },
-                    y: { repeat: Infinity, duration: 12, ease: "easeInOut" },
-                  }}
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 text-blue-400/30"
-                >
-                  {icon}
-                </motion.div>
-
-                {/* Connected nodes effect */}
-                <motion.div
-                  className="absolute top-[20%] left-[20%] w-6 h-6 bg-blue-500/20 rounded-full"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.5, 0.8, 0.5]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-                <motion.div
-                  className="absolute bottom-[30%] right-[25%] w-8 h-8 bg-purple-500/20 rounded-full"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 0.8, 0.5]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                />
-                <motion.div
-                  className="absolute top-[60%] right-[20%] w-5 h-5 bg-green-500/20 rounded-full"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.7, 0.5]
-                  }}
-                  transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-                />
-
-                {/* Connection lines */}
-                <motion.div
-                  className="absolute top-1/2 left-1/2 w-[100px] h-[1px] bg-blue-400/20 origin-left"
-                  style={{ rotate: -45 }}
-                  animate={{ opacity: [0.3, 0.7, 0.3] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-                <motion.div
-                  className="absolute top-1/2 left-1/2 w-[100px] h-[1px] bg-purple-400/20 origin-left"
-                  style={{ rotate: 45 }}
-                  animate={{ opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                />
-                <motion.div
-                  className="absolute top-1/2 left-1/2 w-[120px] h-[1px] bg-green-400/20 origin-left"
-                  style={{ rotate: 160 }}
-                  animate={{ opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
-                />
-
-                {/* Animated glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5"
-                  animate={{
-                    opacity: [0.2, 0.4, 0.2],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-              </div>
-            )}
-
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute right-6 top-6 z-20 p-2 rounded-full bg-gray-800/70 hover:bg-gray-700 transition-colors border border-white/10 text-white/70 hover:text-white"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="p-6 max-h-[70vh] overflow-y-auto">{children}</div>
           </motion.div>
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );

@@ -1,109 +1,132 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Twitter, Linkedin, Github } from "lucide-react";
+import Image from "next/image";
 
 interface TeamMemberProps {
-  member: {
-    name: string;
-    title: string;
-    image: string;
-    social: {
-      linkedin?: string;
-      twitter?: string;
-      github?: string;
-    };
+  name: string;
+  title: string;
+  image: string;
+  social: {
+    linkedin?: string;
+    github?: string;
+    twitter?: string;
   };
 }
 
-const TeamMemberCard: React.FC<TeamMemberProps> = ({ member }) => {
+interface TeamMemberCardProps {
+  member: TeamMemberProps;
+}
+
+// Enhanced team member card with hover effects
+const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className="relative group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      viewport={{ once: true }}
+      whileHover={{
+        y: -10,
+        boxShadow:
+          "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+        transition: { type: "spring", stiffness: 400, damping: 17 },
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl overflow-hidden relative group"
     >
-      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-lg border border-white/5 shadow-xl relative h-full">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
-
-        {/* Avatar Container with Gradient Border */}
-        <div className="relative pt-6 pb-5 px-6">
-          <div className="w-32 h-32 mx-auto mb-5 rounded-full p-1 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg overflow-hidden">
-            <img
-              src={member.image}
-              alt={member.name}
-              loading="lazy"
-              height={128}
-              width={128}
-              className="w-full h-full object-cover rounded-full bg-gray-800"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                  member.name
-                )}&background=random`;
-              }}
-            />
-          </div>
-
-          <div className="text-center">
-            <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-            <p className="text-blue-400 mb-3 font-medium">{member.title}</p>
-          </div>
-
-          {/* Social Icons */}
-          <motion.div
-            className="flex justify-center space-x-3 pt-3 border-t border-white/10"
-            initial={{ opacity: 0.4 }}
-            animate={{ opacity: isHovered ? 1 : 0.4 }}
-            transition={{ duration: 0.3 }}
-          >
-            {member.social.linkedin && (
-              <a
-                href={member.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 transition-colors duration-300"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            )}
-            {member.social.github && (
-              <a
-                href={member.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 transition-colors duration-300"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-            {member.social.twitter && (
-              <a
-                href={member.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 transition-colors duration-300"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-            )}
-          </motion.div>
-        </div>
-
-        {/* Animated Gradient Effect */}
+      {/* Enhanced profile section with hover effects */}
+      <div className="relative pt-[80%] overflow-hidden">
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
+          animate={{
+            scale: isHovered ? 1.05 : 1,
+            transition: { duration: 0.4 },
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover transition-all"
+          />
+        </motion.div>
+
+        {/* Overlay gradient on hover */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
         />
       </div>
+
+      <motion.div
+        className="p-5 text-center relative z-10"
+        animate={{
+          y: isHovered ? -5 : 0,
+          transition: { type: "spring", stiffness: 400, damping: 17 },
+        }}
+      >
+        <h3 className="text-xl font-bold text-white">{member.name}</h3>
+        <p className="text-blue-400 font-medium mt-1">{member.title}</p>
+
+        {/* Enhanced social links with animations */}
+        <motion.div
+          className="flex justify-center gap-4 mt-4"
+          initial={{ opacity: 0.7 }}
+          animate={{ opacity: isHovered ? 1 : 0.7 }}
+          transition={{ duration: 0.3 }}
+        >
+          {member.social.linkedin && (
+            <motion.a
+              href={member.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-400"
+              whileHover={{ scale: 1.2, y: -2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Linkedin size={18} />
+            </motion.a>
+          )}
+          {member.social.github && (
+            <motion.a
+              href={member.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-purple-400"
+              whileHover={{ scale: 1.2, y: -2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Github size={18} />
+            </motion.a>
+          )}
+          {member.social.twitter && (
+            <motion.a
+              href={member.social.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-sky-400"
+              whileHover={{ scale: 1.2, y: -2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Twitter size={18} />
+            </motion.a>
+          )}
+        </motion.div>
+      </motion.div>
+
+      {/* Animated border bottom */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+      />
     </motion.div>
   );
 };

@@ -60,8 +60,11 @@ const MobileSubmenuItem: React.FC<{
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
                       const yOffset = -80;
-                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                      window.scrollTo({top: y, behavior: 'auto'});
+                      const y =
+                        targetElement.getBoundingClientRect().top +
+                        window.pageYOffset +
+                        yOffset;
+                      window.scrollTo({ top: y, behavior: "auto" });
                     }
                     onClose();
                   }}
@@ -135,8 +138,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                       const targetElement = document.getElementById(targetId);
                       if (targetElement) {
                         const yOffset = -80;
-                        const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                        window.scrollTo({top: y, behavior: 'auto'});
+                        const y =
+                          targetElement.getBoundingClientRect().top +
+                          window.pageYOffset +
+                          yOffset;
+                        window.scrollTo({ top: y, behavior: "auto" });
                       }
                       onClose();
                     }}
@@ -190,10 +196,10 @@ const Navbar: React.FC = () => {
     handleResize();
 
     // Add event listener
-    window.addEventListener('resize', handleResize);
-    
+    window.addEventListener("resize", handleResize);
+
     // Clean up
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -260,8 +266,11 @@ const Navbar: React.FC = () => {
     if (targetElement) {
       // Use instant scrolling instead of smooth
       const yOffset = -80; // Offset for fixed header
-      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'auto'});
+      const y =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+      window.scrollTo({ top: y, behavior: "auto" });
     }
     if (isMobileMenuOpen) {
       setMobileMenuOpen(false);
@@ -272,17 +281,20 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     // Add event listeners to all anchor links - use instant scrolling
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
+    anchorLinks.forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
         e.preventDefault();
-        const href = anchor.getAttribute('href');
+        const href = anchor.getAttribute("href");
         if (href) {
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
             const yOffset = -80; // Offset for fixed header
-            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({top: y, behavior: 'auto'});
+            const y =
+              targetElement.getBoundingClientRect().top +
+              window.pageYOffset +
+              yOffset;
+            window.scrollTo({ top: y, behavior: "auto" });
           }
         }
       });
@@ -290,8 +302,8 @@ const Navbar: React.FC = () => {
 
     // Clean up
     return () => {
-      anchorLinks.forEach(anchor => {
-        anchor.removeEventListener('click', () => {});
+      anchorLinks.forEach((anchor) => {
+        anchor.removeEventListener("click", () => {});
       });
     };
   }, []);
@@ -382,7 +394,11 @@ const Navbar: React.FC = () => {
                     <motion.div
                       layoutId="navbar-indicator"
                       className="absolute bottom-0 left-0 right-0 mx-auto w-1 h-1 bg-blue-400 rounded-full"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.8,
+                      }}
                     />
                   )}
                 </a>
