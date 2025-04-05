@@ -1293,6 +1293,7 @@ const HomePage: React.FC = () => {
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                   whileHover={{ y: -3, scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  aria-label="KoshiLabs Facebook page"
                 >
                   <Facebook className="w-5 h-5" />
                 </motion.a>
@@ -1301,6 +1302,7 @@ const HomePage: React.FC = () => {
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                   whileHover={{ y: -3, scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  aria-label="KoshiLabs Twitter/X page"
                 >
                   <Twitter className="w-5 h-5" />
                 </motion.a>
@@ -1309,6 +1311,7 @@ const HomePage: React.FC = () => {
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                   whileHover={{ y: -3, scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  aria-label="KoshiLabs LinkedIn page"
                 >
                   <Linkedin className="w-5 h-5" />
                 </motion.a>

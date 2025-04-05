@@ -89,6 +89,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
               className="text-gray-400 hover:text-blue-400"
               whileHover={{ scale: 1.2, y: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              aria-label={`${member.name}'s LinkedIn profile`}
             >
               <Linkedin size={18} />
             </motion.a>
@@ -101,6 +102,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
               className="text-gray-400 hover:text-purple-400"
               whileHover={{ scale: 1.2, y: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              aria-label={`${member.name}'s GitHub profile`}
             >
               <Github size={18} />
             </motion.a>
@@ -113,6 +115,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
               className="text-gray-400 hover:text-sky-400"
               whileHover={{ scale: 1.2, y: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              aria-label={`${member.name}'s Twitter profile`}
             >
               <Twitter size={18} />
             </motion.a>
