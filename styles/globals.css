@@ -238,11 +238,13 @@
 
 /* Advanced smooth scrolling */
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Adjust for fixed header */
+  scroll-behavior: auto;
+  scroll-padding-top: 100px;
   height: 100%;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
 }
 
 /* Enhanced animation performance */

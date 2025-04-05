@@ -42,21 +42,35 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         viewport={{ once: true }}
         whileHover="whileHover"
         className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/10
-                            transition-all duration-300 hover:bg-white/10
-                            flex flex-col items-start h-full card-hover"
+                 transition-all duration-300 hover:bg-white/10
+                 flex flex-col items-start h-full card-hover"
       >
-        <div className="flex items-center gap-6 mb-8">
-          {service.icon}
-          <h3 className="text-3xl font-semibold text-white bg-clip-text">
-            {service.title}
-          </h3>
+        {/* Enhanced header with icon as background */}
+        <div className="relative w-full mb-6">
+          <div className="absolute -top-6 -left-3 opacity-10 scale-150 transform rotate-12">
+            {service.icon}
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3 z-10">
+              <div className="bg-gray-800/60 p-3 rounded-xl backdrop-blur-sm border border-white/5">
+                {React.cloneElement(service.icon as React.ReactElement, {
+                  className: "w-8 h-8",
+                })}
+              </div>
+              <h3 className="text-2xl font-semibold text-white">
+                {service.title}
+              </h3>
+            </div>
+            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-3"></div>
+          </div>
         </div>
+        
         <p className="text-gray-300 flex-grow text-lg leading-relaxed">
           {service.description}
         </p>
         <Button
           className="mt-8 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 hover:text-blue-300 self-start
-                                 px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-lg transition-all hover-glow"
+                   px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-lg transition-all hover-glow"
           onClick={() => setIsModalOpen(true)}
         >
           Learn More <ArrowRight className="ml-3 w-6 h-6" />

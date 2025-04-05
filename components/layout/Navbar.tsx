@@ -59,7 +59,9 @@ const MobileSubmenuItem: React.FC<{
                     const targetId = child.href.substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                      targetElement.scrollIntoView({ behavior: "smooth" });
+                      const yOffset = -80;
+                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                      window.scrollTo({top: y, behavior: 'auto'});
                     }
                     onClose();
                   }}
@@ -132,7 +134,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                       const targetId = item.href.substring(1);
                       const targetElement = document.getElementById(targetId);
                       if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: "smooth" });
+                        const yOffset = -80;
+                        const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'auto'});
                       }
                       onClose();
                     }}
@@ -254,7 +258,10 @@ const Navbar: React.FC = () => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+      // Use instant scrolling instead of smooth
+      const yOffset = -80; // Offset for fixed header
+      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'auto'});
     }
     if (isMobileMenuOpen) {
       setMobileMenuOpen(false);
@@ -263,42 +270,19 @@ const Navbar: React.FC = () => {
 
   // Enhance scroll behavior
   useEffect(() => {
-    // Helper function for extra smooth scrolling
-    const smoothScroll = (e: Event, target: HTMLElement) => {
-      e.preventDefault();
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1000; // Increased duration for smoother effect
-      let start: number | null = null;
-      
-      const animation = (currentTime: number) => {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        const scrollY = easeOutCubic(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, scrollY);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-      
-      // Improved easing function for smoother movement
-      const easeOutCubic = (t: number, b: number, c: number, d: number) => {
-        t /= d;
-        t--;
-        return c * (t * t * t + 1) + b;
-      };
-      
-      requestAnimationFrame(animation);
-    };
-
-    // Add event listeners to all anchor links
+    // Add event listeners to all anchor links - use instant scrolling
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(anchor => {
       anchor.addEventListener('click', (e) => {
+        e.preventDefault();
         const href = anchor.getAttribute('href');
         if (href) {
-          const targetElement = document.querySelector(href);
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
           if (targetElement) {
-            smoothScroll(e, targetElement as HTMLElement);
+            const yOffset = -80; // Offset for fixed header
+            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'auto'});
           }
         }
       });

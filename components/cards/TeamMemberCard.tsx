@@ -33,11 +33,11 @@ const TeamMemberCard: React.FC<TeamMemberProps> = ({ member }) => {
 
         {/* Avatar Container with Gradient Border */}
         <div className="relative pt-6 pb-5 px-6">
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full p-1 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg overflow-hidden">
+          <div className="w-32 h-32 mx-auto mb-5 rounded-full p-1 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg overflow-hidden">
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-full object-contain rounded-full bg-gray-700"
+              className="w-full h-full object-cover rounded-full bg-gray-800"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
@@ -47,8 +47,8 @@ const TeamMemberCard: React.FC<TeamMemberProps> = ({ member }) => {
           </div>
 
           <div className="text-center">
-            <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-            <p className="text-gray-400 mb-3">{member.title}</p>
+            <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+            <p className="text-blue-400 mb-3 font-medium">{member.title}</p>
           </div>
 
           {/* Social Icons */}

@@ -165,38 +165,55 @@ const services = [
       We follow industry best practices and agile methodologies to deliver high-quality software solutions that drive business growth and efficiency.`,
   },
   {
-    title: "Consulting",
-    icon: <Briefcase className="w-12 h-12 text-green-400 mb-4" />,
+    title: "Modernization",
+    icon: <Rocket className="w-12 h-12 text-indigo-400 mb-4" />,
     description:
-      "Providing expert guidance and strategic advice to drive your business growth and achieve your technology goals.",
-    detailedDescription: `Our IT consulting services provide expert guidance to help you navigate complex technological and business challenges.
+      "Transform your legacy systems into modern, scalable solutions that future-proof your business and increase operational efficiency.",
+    detailedDescription: `Our Modernization service focuses on transforming outdated systems and processes to meet modern business requirements.
       <br/><br/>
       <strong>What We Offer:</strong>
       <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
-        <li>Technology strategy and roadmap development</li>
-        <li>Digital transformation planning and implementation</li>
-        <li>IT infrastructure assessment and optimization</li>
-        <li>Vendor selection and management</li>
-        <li>Technology risk assessment and security planning</li>
+        <li>Legacy system assessment and migration planning</li>
+        <li>Monolith to microservices architecture transformation</li>
+        <li>Cloud migration and infrastructure modernization</li>
+        <li>Tech stack upgrades and code refactoring</li>
+        <li>UI/UX redesign and modern interface implementation</li>
       </ul>
-      Our experienced consultants work closely with your team to understand your business objectives and develop technology strategies that deliver tangible results.`,
+      We help businesses modernize their software systems while minimizing disruption, preserving valuable business logic, and ensuring continuity during the transition.`,
   },
   {
-    title: "Automation",
-    icon: <Search className="w-12 h-12 text-yellow-400 mb-4" />,
+    title: "Performance",
+    icon: <TrendingUp className="w-12 h-12 text-green-400 mb-4" />,
     description:
-      "Ensuring the highest standards of quality through rigorous testing and automated quality assurance processes.",
-    detailedDescription: `Our QA & Automation service ensures your software meets the highest standards of reliability, performance, and user experience.
+      "Optimize your applications for peak performance by fine-tuning frontend, backend, and database functionality with cutting-edge technologies.",
+    detailedDescription: `Our Performance Optimization service ensures your software runs at maximum efficiency, providing the best possible user experience.
       <br/><br/>
       <strong>What We Offer:</strong>
       <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
-        <li>Comprehensive test strategy and planning</li>
-        <li>Manual and automated testing implementation</li>
-        <li>Performance, security, and usability testing</li>
-        <li>Continuous integration testing</li>
-        <li>Test automation framework development</li>
+        <li>Comprehensive performance auditing and bottleneck identification</li>
+        <li>Frontend optimization for faster page loads and rendering</li>
+        <li>Backend code optimization and server-side performance tuning</li>
+        <li>Database query optimization and indexing strategies</li>
+        <li>Scalability planning and implementation for high-traffic applications</li>
       </ul>
-      We implement robust testing methodologies and automation tools to identify issues early, reduce development costs, and deliver superior software quality.`,
+      We employ cutting-edge technologies and best practices to dramatically improve your application's speed, responsiveness, and resource efficiency.`,
+  },
+  {
+    title: "Security",
+    icon: <Boxes className="w-12 h-12 text-red-400 mb-4" />,
+    description:
+      "Protect your applications and data with comprehensive security solutions that identify vulnerabilities and implement industry-leading protection measures.",
+    detailedDescription: `Our Security service provides robust protection for your applications, infrastructure, and data assets through comprehensive assessment and implementation.
+      <br/><br/>
+      <strong>What We Offer:</strong>
+      <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
+        <li>Security assessment and vulnerability scanning</li>
+        <li>Secure coding practices and application hardening</li>
+        <li>Authentication and authorization system implementation</li>
+        <li>Data encryption and protection strategies</li>
+        <li>Security monitoring and incident response planning</li>
+      </ul>
+      We ensure your systems are protected against evolving cyber threats through continuous security testing, remediation, and implementation of industry best practices.`,
   },
   {
     title: "Database",
@@ -216,8 +233,59 @@ const services = [
       We work with both SQL and NoSQL technologies to create scalable, secure, and high-performance database solutions that meet your business requirements.`,
   },
   {
+    title: "AI & ML",
+    icon: <BrainCircuit className="w-12 h-12 text-pink-400 mb-4" />,
+    description:
+      "Developing cutting-edge AI-powered solutions to transform your business and gain a competitive edge.",
+    detailedDescription: `Our AI & ML Solutions help businesses leverage the power of artificial intelligence and machine learning to gain insights, automate processes, and create innovative products.
+      <br/><br/>
+      <strong>What We Offer:</strong>
+      <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
+        <li>Custom AI model development and training</li>
+        <li>Natural Language Processing (NLP) integration</li>
+        <li>Computer Vision solutions</li>
+        <li>Predictive analytics and forecasting models</li>
+        <li>AI strategy consulting and implementation roadmaps</li>
+      </ul>
+      We turn complex data into actionable intelligence, helping you make data-driven decisions that drive growth and innovation.`,
+  },
+  {
+    title: "Automation",
+    icon: <Search className="w-12 h-12 text-yellow-400 mb-4" />,
+    description:
+      "Ensuring the highest standards of quality through rigorous testing and automated quality assurance processes.",
+    detailedDescription: `Our QA & Automation service ensures your software meets the highest standards of reliability, performance, and user experience.
+      <br/><br/>
+      <strong>What We Offer:</strong>
+      <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
+        <li>Comprehensive test strategy and planning</li>
+        <li>Manual and automated testing implementation</li>
+        <li>Performance, security, and usability testing</li>
+        <li>Continuous integration testing</li>
+        <li>Test automation framework development</li>
+      </ul>
+      We implement robust testing methodologies and automation tools to identify issues early, reduce development costs, and deliver superior software quality.`,
+  },
+  {
+    title: "Consulting",
+    icon: <Briefcase className="w-12 h-12 text-orange-400 mb-4" />,
+    description:
+      "Providing expert guidance and strategic advice to drive your business growth and achieve your technology goals.",
+    detailedDescription: `Our IT consulting services provide expert guidance to help you navigate complex technological and business challenges.
+      <br/><br/>
+      <strong>What We Offer:</strong>
+      <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
+        <li>Technology strategy and roadmap development</li>
+        <li>Digital transformation planning and implementation</li>
+        <li>IT infrastructure assessment and optimization</li>
+        <li>Vendor selection and management</li>
+        <li>Technology risk assessment and security planning</li>
+      </ul>
+      Our experienced consultants work closely with your team to understand your business objectives and develop technology strategies that deliver tangible results.`,
+  },
+  {
     title: "DevOps & Cloud",
-    icon: <Laptop2 className="w-12 h-12 text-orange-400 mb-4" />,
+    icon: <Laptop2 className="w-12 h-12 text-blue-500 mb-4" />,
     description:
       "Enhancing the speed, efficiency, and scalability of your systems with modern DevOps practices and cloud solutions.",
     detailedDescription: `Our DevOps & Cloud service helps identify and implement best practices for continuous integration, delivery, and cloud infrastructure.
@@ -231,23 +299,6 @@ const services = [
         <li>Cloud cost optimization and management</li>
       </ul>
       We help organizations adopt DevOps culture and cloud technologies to increase deployment frequency, reduce time to market, and improve system reliability.`,
-  },
-  {
-    title: "AI & ML",
-    icon: <BrainCircuit className="w-12 h-12 text-pink-400 mb-4" />,
-    description:
-      "Developing cutting-edge AI-powered solutions to transform your business and gain a competitive edge.",
-    detailedDescription: `Our AI & Machine Learning service helps businesses leverage artificial intelligence to solve complex problems and create new opportunities.
-      <br/><br/>
-      <strong>What We Offer:</strong>
-      <ul class="list-disc pl-5 space-y-2 mt-3 mb-4">
-        <li>AI strategy and implementation planning</li>
-        <li>Machine learning model development and training</li>
-        <li>Natural language processing solutions</li>
-        <li>Computer vision and image recognition systems</li>
-        <li>Predictive analytics and forecasting</li>
-      </ul>
-      We combine domain expertise with advanced AI technologies to create intelligent solutions that automate processes, uncover insights, and enhance decision-making.`,
   },
 ];
 
@@ -279,25 +330,25 @@ const teamMembers = [
   {
     name: "Raju",
     title: "CEO",
-    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Raju&backgroundColor=1e88e5",
+    image: "/teams/raju.webp",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Sanam",
     title: "CTO",
-    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Sanam&backgroundColor=8e24aa",
+    image: "/teams/sanam.webp",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Gopal",
-    title: "Architect",
-    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Gopal&backgroundColor=43a047",
+    title: "Software Architect",
+    image: "/teams/gopal.webp",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
-    name: "Frank",
+    name: "Loop",
     title: "Software Engineer",
-    image: "https://api.dicebear.com/7.x/bottts/svg?seed=Frank&backgroundColor=e53935",
+    image: "/teams/loop.webp",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
 ];
@@ -385,45 +436,21 @@ const HomePage: React.FC = () => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  // Add smooth scrolling
+  // Add instant scrolling
   useEffect(() => {
-    // Helper function for smooth scrolling
-    const smoothScroll = (e: Event, target: HTMLElement) => {
-      e.preventDefault();
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 800;
-      let start: number | null = null;
-      
-      const animation = (currentTime: number) => {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        const scrollY = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, scrollY);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-      
-      // Easing function
-      const ease = (t: number, b: number, c: number, d: number) => {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-      };
-      
-      requestAnimationFrame(animation);
-    };
-
     // Add event listeners to all anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(anchor => {
       anchor.addEventListener('click', (e) => {
+        e.preventDefault();
         const href = anchor.getAttribute('href');
         if (href) {
-          const targetElement = document.querySelector(href);
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
           if (targetElement) {
-            smoothScroll(e, targetElement as HTMLElement);
+            const yOffset = -80; // Offset for fixed header
+            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'auto'});
           }
         }
       });
@@ -479,6 +506,15 @@ const HomePage: React.FC = () => {
         <FloatingSVG bottom="15%" left="40%" delay={1} size="lg" opacity={0.8}>
           <Wand2 className="text-purple-400/90" />
         </FloatingSVG>
+        <FloatingSVG bottom="25%" right="30%" delay={1.5} size="sm" opacity={0.6}>
+          <Code2 className="text-green-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="15%" left="5%" delay={0.3} size="md" opacity={0.5}>
+          <Database className="text-red-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="60%" right="5%" delay={1.7} size="sm" opacity={0.6}>
+          <BrainCircuit className="text-purple-400/90" />
+        </FloatingSVG>
 
         <div className="max-w-xl relative z-10 text-left mx-4 md:mx-8 mt-8">
           <motion.h1
@@ -513,9 +549,12 @@ const HomePage: React.FC = () => {
                            shadow-lg hover:shadow-xl text-xl px-8 py-6 rounded-full font-semibold hover-glow"
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("about")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  const targetElement = document.getElementById("about");
+                  if (targetElement) {
+                    const yOffset = -80;
+                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'auto'});
+                  }
                 }}
               >
                 About Us
@@ -630,6 +669,24 @@ const HomePage: React.FC = () => {
         >
           <Rocket className="text-blue-400/90" />
         </FloatingSVG>
+        <FloatingSVG top="40%" left="25%" delay={0.5} size="md" opacity={0.7}>
+          <BrainCircuit className="text-pink-400/90" />
+        </FloatingSVG>
+        <FloatingSVG bottom="30%" right="30%" delay={1.2} size="sm" opacity={0.6}>
+          <Cpu className="text-blue-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="8%" left="35%" delay={0.9} size="sm" opacity={0.5}>
+          <Layers3 className="text-green-400/90" />
+        </FloatingSVG>
+        <FloatingSVG bottom="50%" right="5%" delay={1.4} size="md" opacity={0.7}>
+          <Users className="text-yellow-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="60%" left="5%" delay={1.0} size="sm" opacity={0.5}>
+          <Search className="text-red-400/90" />
+        </FloatingSVG>
+        <FloatingSVG bottom="5%" right="40%" delay={0.5} size="md" opacity={0.6}>
+          <Briefcase className="text-purple-400/90" />
+        </FloatingSVG>
 
         <div className="flex flex-col lg:flex-row items-center gap-16 relative z-10">
           <motion.div
@@ -691,9 +748,12 @@ const HomePage: React.FC = () => {
                                         shadow-lg hover:shadow-xl px-8 py-4 rounded-full font-semibold"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("services")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    const targetElement = document.getElementById("services");
+                    if (targetElement) {
+                      const yOffset = -80;
+                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                      window.scrollTo({top: y, behavior: 'auto'});
+                    }
                   }}
                 >
                   Explore Our Services
@@ -789,12 +849,34 @@ const HomePage: React.FC = () => {
         id="services"
         className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden"
       >
-        <FloatingSVG top="20%" right="10%" delay={0.5} size="lg">
+        <FloatingSVG top="10%" left="5%" delay={0.5} size="xl" opacity={0.7}>
+          <Cpu className="text-blue-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="20%" right="5%" delay={0.9} size="lg" opacity={0.7}>
+          <Code2 className="text-purple-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="40%" left="30%" delay={1.3} size="md" opacity={0.6}>
           <Layers3 className="text-green-400/80" />
         </FloatingSVG>
-        <FloatingSVG bottom="10%" left="5%" delay={1.5} size="lg">
-          <Code2 className="text-blue-400/80" />
+        <FloatingSVG top="30%" right="25%" delay={0.7} size="sm" opacity={0.6}>
+          <Search className="text-yellow-400/80" />
         </FloatingSVG>
+        <FloatingSVG top="20%" left="35%" delay={1.5} size="sm" opacity={0.5}>
+          <Briefcase className="text-red-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="15%" left="15%" delay={1.1} size="md" opacity={0.6}>
+          <Wand2 className="text-purple-400/80" />
+        </FloatingSVG>
+        <FloatingSVG top="5%" right="40%" delay={0.3} size="sm" opacity={0.5}>
+          <TrendingUp className="text-blue-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="10%" right="30%" delay={1.7} size="sm" opacity={0.6}>
+          <Database className="text-pink-400/80" />
+        </FloatingSVG>
+        <FloatingSVG top="35%" left="10%" delay={0.8} size="md" opacity={0.7}>
+          <Gem className="text-green-400/80" />
+        </FloatingSVG>
+        
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Services
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -817,6 +899,28 @@ const HomePage: React.FC = () => {
         <FloatingSVG bottom="25%" right="8%" delay={1.2} size="lg">
           <Database className="text-purple-400/80" />
         </FloatingSVG>
+        <FloatingSVG top="40%" right="20%" delay={0.6} size="md">
+          <Wand2 className="text-pink-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="15%" left="25%" delay={1} size="sm">
+          <Layers3 className="text-blue-400/80" />
+        </FloatingSVG>
+        <FloatingSVG top="5%" right="30%" delay={0.4} size="md">
+          <Gem className="text-green-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="35%" left="10%" delay={1.4} size="sm">
+          <Search className="text-yellow-400/80" />
+        </FloatingSVG>
+        <FloatingSVG top="30%" left="40%" delay={0.9} size="md">
+          <TrendingUp className="text-red-400/80" />
+        </FloatingSVG>
+        <FloatingSVG bottom="5%" right="15%" delay={1.6} size="sm">
+          <Code2 className="text-blue-400/80" />
+        </FloatingSVG>
+        <FloatingSVG top="20%" left="20%" delay={0.7} size="sm">
+          <Cpu className="text-purple-400/80" />
+        </FloatingSVG>
+        
         <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
           Our Products
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -863,9 +967,12 @@ const HomePage: React.FC = () => {
                   className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full px-8 py-6 shadow-lg hover:shadow-xl font-medium w-full"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    const targetElement = document.getElementById("contact");
+                    if (targetElement) {
+                      const yOffset = -80;
+                      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                      window.scrollTo({top: y, behavior: 'auto'});
+                    }
                   }}
                 >
                   <span className="pointer-events-none">Get in Touch</span>
@@ -892,6 +999,21 @@ const HomePage: React.FC = () => {
         </FloatingSVG>
         <FloatingSVG top="15%" left="8%" delay={0.6} size="xl" opacity={0.8}>
           <Users className="text-blue-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="25%" right="20%" delay={0.8} size="md" opacity={0.7}>
+          <BrainCircuit className="text-green-400/90" />
+        </FloatingSVG>
+        <FloatingSVG bottom="30%" left="25%" delay={1.1} size="sm" opacity={0.6}>
+          <Rocket className="text-orange-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="5%" right="40%" delay={0.4} size="sm" opacity={0.6}>
+          <Laptop2 className="text-purple-400/90" />
+        </FloatingSVG>
+        <FloatingSVG bottom="20%" left="45%" delay={1.3} size="md" opacity={0.7}>
+          <Cpu className="text-blue-400/90" />
+        </FloatingSVG>
+        <FloatingSVG top="35%" left="35%" delay={0.9} size="sm" opacity={0.5}>
+          <Code2 className="text-red-400/90" />
         </FloatingSVG>
 
         <motion.div
@@ -924,6 +1046,21 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <FloatingSVG top="10%" right="5%" delay={0.3} size="lg">
             <Users className="text-purple-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="15%" left="8%" delay={0.5} size="md">
+            <Gem className="text-blue-400/80" />
+          </FloatingSVG>
+          <FloatingSVG top="40%" left="20%" delay={0.7} size="sm">
+            <TrendingUp className="text-green-400/80" />
+          </FloatingSVG>
+          <FloatingSVG top="20%" right="30%" delay={0.2} size="md">
+            <Briefcase className="text-yellow-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="30%" right="15%" delay={0.9} size="sm">
+            <Zap className="text-pink-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="40%" left="35%" delay={1.1} size="sm">
+            <BrainCircuit className="text-orange-400/80" />
           </FloatingSVG>
 
           <motion.div
@@ -962,6 +1099,21 @@ const HomePage: React.FC = () => {
           <FloatingSVG top="20%" right="10%" delay={0.7} size="xl" opacity={0.8}>
             <Boxes className="text-blue-400/90" />
           </FloatingSVG>
+          <FloatingSVG bottom="25%" left="10%" delay={0.4} size="lg" opacity={0.7}>
+            <Search className="text-purple-400/90" />
+          </FloatingSVG>
+          <FloatingSVG top="40%" left="25%" delay={0.9} size="md" opacity={0.6}>
+            <BrainCircuit className="text-pink-400/90" />
+          </FloatingSVG>
+          <FloatingSVG bottom="15%" right="25%" delay={0.2} size="md" opacity={0.6}>
+            <Laptop2 className="text-green-400/90" />
+          </FloatingSVG>
+          <FloatingSVG top="10%" left="40%" delay={0.5} size="sm" opacity={0.5}>
+            <Database className="text-yellow-400/90" />
+          </FloatingSVG>
+          <FloatingSVG bottom="40%" right="40%" delay={1.1} size="sm" opacity={0.6}>
+            <Cpu className="text-red-400/90" />
+          </FloatingSVG>
 
           <motion.div
             variants={fadeInVariants}
@@ -994,13 +1146,28 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative overflow-hidden">
+      <section id="contact" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
           <FloatingSVG top="15%" right="10%" delay={0.5} size="lg">
             <Briefcase className="text-blue-400/80" />
           </FloatingSVG>
           <FloatingSVG bottom="10%" left="5%" delay={0.7} size="md">
             <Laptop2 className="text-purple-500/80" />
+          </FloatingSVG>
+          <FloatingSVG top="30%" left="20%" delay={0.9} size="sm">
+            <Code2 className="text-green-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="25%" right="25%" delay={0.3} size="sm">
+            <TrendingUp className="text-orange-400/80" />
+          </FloatingSVG>
+          <FloatingSVG top="10%" left="40%" delay={0.6} size="md">
+            <Database className="text-yellow-400/80" />
+          </FloatingSVG>
+          <FloatingSVG bottom="20%" right="15%" delay={1.1} size="sm">
+            <Zap className="text-pink-400/80" />
+          </FloatingSVG>
+          <FloatingSVG top="40%" right="35%" delay={0.8} size="sm">
+            <Gem className="text-blue-400/80" />
           </FloatingSVG>
 
           <motion.div
@@ -1055,6 +1222,17 @@ const HomePage: React.FC = () => {
             ))}
           </motion.div>
         </div>
+        
+        <FloatingSVG bottom="60%" left="5%" delay={0.3} size="md" opacity={0.3}>
+          <Rocket className="text-blue-400/60" />
+        </FloatingSVG>
+        <FloatingSVG top="30%" right="8%" delay={0.7} size="md" opacity={0.3}>
+          <BrainCircuit className="text-purple-400/60" />
+        </FloatingSVG>
+        <FloatingSVG bottom="30%" left="40%" delay={0.5} size="sm" opacity={0.3}>
+          <Code2 className="text-green-400/60" />
+        </FloatingSVG>
+        
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
             {/* KoshiLabs Text */}
