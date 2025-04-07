@@ -38,7 +38,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
       onHoverEnd={() => setIsHovered(false)}
       className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl overflow-hidden relative group"
     >
-      {/* Enhanced profile section with hover effects */}
+      {/* Profile section with hover effects */}
       <div className="relative pt-[80%] overflow-hidden">
         <motion.div
           animate={{
@@ -51,6 +51,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
             src={member.image}
             alt={member.name}
             fill
+            loading="lazy"
             className="object-cover transition-all"
           />
         </motion.div>
@@ -74,7 +75,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         <h3 className="text-xl font-bold text-white">{member.name}</h3>
         <p className="text-blue-400 font-medium mt-1">{member.title}</p>
 
-        {/* Enhanced social links with animations */}
+        {/* Social links */}
         <motion.div
           className="flex justify-center gap-4 mt-4"
           initial={{ opacity: 0.7 }}

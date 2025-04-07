@@ -559,15 +559,20 @@ const HomePage: React.FC = () => {
             animate="visible"
             className="flex flex-wrap gap-4"
           >
-            <a href="#about">
+            <motion.a 
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Button
                 size="lg"
-                className="bg-white/10 border-2 border-blue-500/50 text-white
-                           hover:bg-white/20 transition-all duration-300
-                           shadow-lg hover:shadow-xl text-xl px-8 py-6 rounded-full font-semibold hover-glow"
+                className="bg-gradient-to-r from-blue-500 to-purple-500 border-none text-white
+                        hover:from-blue-600 hover:to-purple-600 transition-all duration-300
+                        shadow-lg hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] 
+                        text-xl px-10 py-6 rounded-full font-semibold"
                 onClick={(e) => {
                   e.preventDefault();
-                  const targetElement = document.getElementById("about");
+                  const targetElement = document.getElementById("contact");
                   if (targetElement) {
                     const yOffset = -80;
                     const y =
@@ -578,9 +583,17 @@ const HomePage: React.FC = () => {
                   }
                 }}
               >
-                About Us
+                <span className="flex items-center gap-2">
+                  Contact Us
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    →
+                  </motion.span>
+                </span>
               </Button>
-            </a>
+            </motion.a>
           </motion.div>
         </div>
 
@@ -786,16 +799,13 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="relative group">
-              {/* Animated background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-              
               {/* Glowing border effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 group-hover:border-white/20 transition-all duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-500"></div>
               
               {/* Main card content */}
               <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="p-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl">
+                  <div className="p-3 bg-blue-500/20 rounded-xl">
                     <Zap className="w-6 h-6 text-blue-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
@@ -806,7 +816,7 @@ const HomePage: React.FC = () => {
                 <div className="space-y-8">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 hover:from-blue-500/10 hover:via-purple-500/10 hover:to-blue-500/10 transition-all duration-300"
+                    className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="p-3 bg-blue-500/20 rounded-xl">
                       <Zap className="w-5 h-5 text-blue-400" />
@@ -823,7 +833,7 @@ const HomePage: React.FC = () => {
 
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-purple-500/5 hover:from-purple-500/10 hover:via-pink-500/10 hover:to-purple-500/10 transition-all duration-300"
+                    className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="p-3 bg-purple-500/20 rounded-xl">
                       <BrainCircuit className="w-5 h-5 text-purple-400" />
@@ -840,7 +850,7 @@ const HomePage: React.FC = () => {
 
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-pink-500/5 via-blue-500/5 to-pink-500/5 hover:from-pink-500/10 hover:via-blue-500/10 hover:to-pink-500/10 transition-all duration-300"
+                    className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="p-3 bg-pink-500/20 rounded-xl">
                       <Gem className="w-5 h-5 text-pink-400" />
@@ -857,7 +867,7 @@ const HomePage: React.FC = () => {
 
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 hover:from-blue-500/10 hover:via-purple-500/10 hover:to-blue-500/10 transition-all duration-300"
+                    className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="p-3 bg-blue-500/20 rounded-xl">
                       <Users className="w-5 h-5 text-blue-400" />
@@ -1254,6 +1264,7 @@ const HomePage: React.FC = () => {
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
+                          loading="lazy"
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -1381,7 +1392,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Footer - Enhanced with animated background text */}
-      <footer className="relative py-16 bg-gray-950/50 backdrop-blur-md min-h-[400px] flex items-center rounded-t-[4rem] border-t border-white/10">
+      <footer className="relative py-12 bg-gray-950/50 backdrop-blur-md min-h-[320px] flex items-center rounded-t-[4rem] border-t border-white/10">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
@@ -1496,6 +1507,13 @@ const HomePage: React.FC = () => {
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
               </motion.div>
+              
+              <motion.div
+                className="text-gray-400 text-sm mt-6"
+                whileHover={{ color: "#60A5FA" }}
+              >
+                © 2025 KoshiLabs. All rights reserved.
+              </motion.div>
             </div>
 
             {/* Quick Links */}
@@ -1533,16 +1551,28 @@ const HomePage: React.FC = () => {
                 Contact Information
               </h4>
               <motion.div
-                className="space-y-3 text-gray-400"
+                className="space-y-5 text-gray-400"
                 whileHover={{ opacity: 1 }}
                 initial={{ opacity: 0.9 }}
               >
-                <div className="flex items-center justify-center md:justify-end gap-2">
-                  <MapPin className="w-4 h-4 text-blue-400" />
+                <motion.div 
+                  className="flex items-center justify-center md:justify-end gap-3"
+                  whileHover={{ x: -5, color: "#60A5FA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="p-2 bg-blue-500/10 rounded-full">
+                    <MapPin className="w-5 h-5 text-blue-400" />
+                  </div>
                   <span>Birtamod, Koshi Province, Nepal</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-end gap-2">
-                  <Phone className="w-4 h-4 text-blue-400" />
+                </motion.div>
+                <motion.div 
+                  className="flex items-center justify-center md:justify-end gap-3"
+                  whileHover={{ x: -5, color: "#60A5FA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="p-2 bg-blue-500/10 rounded-full">
+                    <Phone className="w-5 h-5 text-blue-400" />
+                  </div>
                   <span>
                     <a
                       href="tel:+977 9817996672"
@@ -1551,9 +1581,15 @@ const HomePage: React.FC = () => {
                       +977 9817996672
                     </a>
                   </span>
-                </div>
-                <div className="flex items-center justify-center md:justify-end gap-2">
-                  <Mail className="w-4 h-4 text-blue-400" />
+                </motion.div>
+                <motion.div 
+                  className="flex items-center justify-center md:justify-end gap-3"
+                  whileHover={{ x: -5, color: "#60A5FA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="p-2 bg-blue-500/10 rounded-full">
+                    <Mail className="w-5 h-5 text-blue-400" />
+                  </div>
                   <span>
                     <a
                       href="mailto:admin@koshilabs.com"
@@ -1562,16 +1598,7 @@ const HomePage: React.FC = () => {
                       admin@koshilabs.com
                     </a>
                   </span>
-                </div>
-              </motion.div>
-
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-6" />
-
-              <motion.div
-                className="text-gray-400 text-sm"
-                whileHover={{ color: "#60A5FA" }}
-              >
-                © {new Date().getFullYear()} KoshiLabs. All rights reserved.
+                </motion.div>
               </motion.div>
             </div>
           </div>
