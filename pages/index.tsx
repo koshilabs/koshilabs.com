@@ -478,26 +478,38 @@ const HomePage: React.FC = () => {
   return (
     <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-black min-h-screen">
       <Head>
-        <title>KoshiLabs - Crafting Digital Excellence</title>
+        <title>Koshi Labs - Crafting Digital Excellence</title>
         <meta
           name="description"
-          content="Your trusted partner for innovative software solutions. We specialize in development, consulting, and AI-powered services."
+          content="Koshi Labs Pvt. Ltd. is a leading software development company in Birtamode, Jhapa, Nepal specializing in custom software development, AI solutions, web applications, mobile apps, and digital transformation services."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="keywords"
-          content="software development, consulting, AI solutions, KoshiLabs, Nepal"
+          content="KoshiLabs, Koshi Labs, software development, Birtamode, Jhapa, Nepal, web development, mobile app development, database, performance optimization, AI solutions, custom software, digital transformation, IT services, consulting, Nepali tech company, software company Nepal"
         />
-        <meta
-          property="og:title"
-          content="KoshiLabs - Crafting Digital Excellence"
-        />
+        <meta property="og:title" content="Koshi Labs Pvt. Ltd. - Premier Software Development Company in Nepal" />
         <meta
           property="og:description"
-          content="Your trusted partner for innovative software solutions."
+          content="Leading software development company in Birtamode, Jhapa, Nepal offering innovative solutions in web development, mobile apps, and AI services."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://koshilabs.com" />
+        <meta property="og:image" content="https://koshilabs.com/og-image.jpg" />
+        <meta property="og:site_name" content="KoshiLabs" />
+        <meta property="og:locale" content="en_US" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="KoshiLabs - Crafting Digital Excellence" />
+        <meta name="twitter:description" content="Leading software development company in Birtamode, Jhapa, Nepal offering innovative solutions in web development, mobile apps, and AI services." />
+        <meta name="twitter:image" content="https://koshilabs.com/og-image.jpg" />
+        
+        <meta name="geo.region" content="NP-P1" />
+        <meta name="geo.placename" content="Birtamode, Jhapa" />
+        <meta name="geo.position" content="26.6418;87.9927" />
+        <meta name="ICBM" content="26.6418, 87.9927" />
+        
+        <link rel="canonical" href="https://koshilabs.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -550,8 +562,8 @@ const HomePage: React.FC = () => {
             animate="visible"
             className="text-xl text-gray-300 mb-12 leading-relaxed"
           >
-            Your trusted partner for innovative software solutions. We
-            specialize in development, consulting, and AI-powered services.
+            Your trusted partner for innovative software solutions. 
+            We specialize in development, consulting, and AI-powered services.
           </motion.p>
           <motion.div
             variants={fadeInVariants}
