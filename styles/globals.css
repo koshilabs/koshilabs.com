@@ -238,7 +238,7 @@
 
 /* Advanced smooth scrolling */
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   scroll-padding-top: 100px;
   height: 100%;
   overflow-y: auto;
@@ -251,14 +251,31 @@ html {
 .transition-all,
 .animate-*,
 [class*="motion-"],
-[class*="hover:"] {
+[class*="animate-"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Optimize scrolling performance */
+* {
+  scroll-margin-top: 100px;
+}
+
+/* Smooth scroll behavior for anchor links */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Container width adjustment */

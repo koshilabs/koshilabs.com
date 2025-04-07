@@ -53,7 +53,7 @@ const FloatingSVG: React.FC<FloatingSVGProps> = ({
         left: props.left,
         right: props.right,
         bottom: props.bottom,
-        zIndex: 1,
+        zIndex: -1,
       }}
     >
       <div className={sizeClasses[size]}>{children}</div>

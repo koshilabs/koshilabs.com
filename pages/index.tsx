@@ -20,13 +20,14 @@ import {
   Boxes,
   UserCircle2,
   Facebook,
-  Twitter,
+  X,
   Linkedin,
   Github,
   Instagram,
   MapPin,
   Phone,
   Mail,
+  Lock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -784,74 +785,92 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-              <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-xl border border-white/10 p-8 shadow-xl">
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  Why Choose Us?
-                </h3>
+            <div className="relative group">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+              
+              {/* Glowing border effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 group-hover:border-white/20 transition-all duration-500"></div>
+              
+              {/* Main card content */}
+              <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl">
+                    <Zap className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    Why Choose Us?
+                  </h3>
+                </div>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-500/20 rounded-full p-2 mt-1">
+                <div className="space-y-8">
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 hover:from-blue-500/10 hover:via-purple-500/10 hover:to-blue-500/10 transition-all duration-300"
+                  >
+                    <div className="p-3 bg-blue-500/20 rounded-xl">
                       <Zap className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Unwavering Commitment to Quality
                       </h4>
-                      <p className="text-gray-300 mt-1">
-                        We go above and beyond to deliver software that exceeds
-                        your expectations.
+                      <p className="text-gray-300 mt-2">
+                        We go above and beyond to deliver software that exceeds your expectations.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="bg-purple-500/20 rounded-full p-2 mt-1">
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-purple-500/5 hover:from-purple-500/10 hover:via-pink-500/10 hover:to-purple-500/10 transition-all duration-300"
+                  >
+                    <div className="p-3 bg-purple-500/20 rounded-xl">
                       <BrainCircuit className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Affordable Excellence
                       </h4>
-                      <p className="text-gray-300 mt-1">
-                        High-quality software doesn't have to break the bank. We
-                        offer competitive pricing without compromising quality.
+                      <p className="text-gray-300 mt-2">
+                        High-quality software doesn't have to break the bank. We offer competitive pricing without compromising quality.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="bg-green-500/20 rounded-full p-2 mt-1">
-                      <Gem className="w-5 h-5 text-green-400" />
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-pink-500/5 via-blue-500/5 to-pink-500/5 hover:from-pink-500/10 hover:via-blue-500/10 hover:to-pink-500/10 transition-all duration-300"
+                  >
+                    <div className="p-3 bg-pink-500/20 rounded-xl">
+                      <Gem className="w-5 h-5 text-pink-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Local Expertise, Global Standards
                       </h4>
-                      <p className="text-gray-300 mt-1">
-                        We understand unique market challenges and apply global
-                        best practices to deliver impactful solutions.
+                      <p className="text-gray-300 mt-2">
+                        We understand unique market challenges and apply global best practices to deliver impactful solutions.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="bg-yellow-500/20 rounded-full p-2 mt-1">
-                      <Users className="w-5 h-5 text-yellow-400" />
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 hover:from-blue-500/10 hover:via-purple-500/10 hover:to-blue-500/10 transition-all duration-300"
+                  >
+                    <div className="p-3 bg-blue-500/20 rounded-xl">
+                      <Users className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-white">
                         Dedicated Support
                       </h4>
-                      <p className="text-gray-300 mt-1">
-                        We're more than just developers; we're your partners. We
-                        provide ongoing support to ensure your software meets
-                        evolving needs.
+                      <p className="text-gray-300 mt-2">
+                        We're more than just developers; we're your partners. We provide ongoing support to ensure your software meets evolving needs.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -890,11 +909,11 @@ const HomePage: React.FC = () => {
           ]}
         />
 
-        <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
+        <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-[1] font-heading">
           Our Services
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-[1]">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
@@ -904,96 +923,224 @@ const HomePage: React.FC = () => {
       {/* Products Section */}
       <section
         id="products"
-        className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden bg-gray-950/50 backdrop-blur-md rounded-t-[4rem] border-t border-white/10"
+        className="container mx-auto px-6 lg:px-8 py-24 relative overflow-hidden"
       >
-        <FloatingSVGGroup
-          elements={[
-            {
-              icon: <Boxes className="text-orange-400/80" />,
-              position: { top: "15%", left: "5%" },
-              size: "lg",
-              opacity: 0.7,
-              delay: 0.8,
-            },
-            {
-              icon: <Database className="text-purple-400/80" />,
-              position: { bottom: "25%", right: "8%" },
-              size: "lg",
-              opacity: 0.7,
-              delay: 1.2,
-            },
-            {
-              icon: <Wand2 className="text-pink-400/80" />,
-              position: { top: "40%", right: "20%" },
-              size: "md",
-              opacity: 0.7,
-              delay: 0.6,
-            },
-          ]}
-        />
+        <div className="relative">
+          <FloatingSVGGroup
+            elements={[
+              {
+                icon: <Boxes className="text-orange-400/80" />,
+                position: { top: "15%", left: "5%" },
+                size: "lg",
+                opacity: 0.7,
+                delay: 0.8,
+              },
+              {
+                icon: <Database className="text-purple-400/80" />,
+                position: { bottom: "25%", right: "8%" },
+                size: "lg",
+                opacity: 0.7,
+                delay: 1.2,
+              },
+              {
+                icon: <Wand2 className="text-pink-400/80" />,
+                position: { top: "40%", right: "20%" },
+                size: "md",
+                opacity: 0.7,
+                delay: 0.6,
+              },
+            ]}
+          />
+        </div>
 
-        <h2 className="text-4xl font-bold text-center text-white mb-16 relative z-10 font-heading">
+        <h2 className="text-4xl font-bold text-center text-white mb-16 relative font-heading">
           Our Products
           <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </h2>
-        <div className="products-card-container">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
           {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
+            <div key={index} className="relative">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
-        <div className="mt-16 relative z-10 px-4">
+
+        {/* Open Source Section */}
+        <div className="mt-32 relative z-0">
           <motion.div
-            variants={cardVariants}
+            variants={fadeInVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            whileHover={{ y: -8, transition: { duration: 0.3 } }}
-            className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+            className="text-center mb-16"
           >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
-            <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              KoshiLabs <span className="text-pink-400">❤️</span> Open Source
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              We believe in giving back to the community. Check out our open source projects that help developers worldwide.
+            </p>
+            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />
+          </motion.div>
 
-            <div className="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex items-center gap-6">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-md"></div>
-                  <div className="relative p-4 bg-gray-900/80 rounded-full border border-white/10">
-                    <Rocket className="w-14 h-14 text-purple-400" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+              <div className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-blue-500/20 rounded-xl">
+                    <Code2 className="w-8 h-8 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">NepDate</h3>
+                    <p className="text-gray-400">Super-fast Nepali Date struct for .NET</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                    More projects over the horizon
-                  </h3>
-                  <p className="mt-2 text-lg text-gray-300">
-                    Have an idea? Let's collaborate to bring your vision to
-                    life!
-                  </p>
-                </div>
-              </div>
-              <motion.div whileHover={{ scale: 1.05 }} className="shrink-0">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full px-8 py-6 shadow-lg hover:shadow-xl font-medium w-full"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const targetElement = document.getElementById("contact");
-                    if (targetElement) {
-                      const yOffset = -80;
-                      const y =
-                        targetElement.getBoundingClientRect().top +
-                        window.pageYOffset +
-                        yOffset;
-                      window.scrollTo({ top: y, behavior: "auto" });
-                    }
-                  }}
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  A high-performance Nepali Date struct that closely resembles the DateOnly struct in .NET, featuring smart date parsing, fiscal year operations, and comprehensive serialization support.
+                </p>
+                <a
+                  href="https://github.com/TheCrossLegCoder/NepDate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  <span className="pointer-events-none">Get in Touch</span>
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
+                  View on GitHub
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+              <div className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-purple-500/20 rounded-xl">
+                    <Database className="w-8 h-8 text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">PostgreSQL to MSSQL</h3>
+                    <p className="text-gray-400">Database Migration Tool</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  A powerful tool for migrating PostgreSQL databases to Microsoft SQL Server, featuring schema conversion, data migration, and comprehensive error handling.
+                </p>
+                <a
+                  href="https://github.com/sanamhub/postgresql-to-mssql"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View on GitHub
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+              <div className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-pink-500/20 rounded-xl">
+                    <Wand2 className="w-8 h-8 text-pink-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">DotNetMapper</h3>
+                    <p className="text-gray-400">Object Mapping Library</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  A lightweight and efficient object mapping library for .NET, designed to simplify the process of mapping between different object types with minimal configuration.
+                </p>
+                <a
+                  href="https://github.com/sanamhub/DotNetMapper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View on GitHub
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+              <div className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-green-500/20 rounded-xl">
+                    <Lock className="w-8 h-8 text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">Password Generator</h3>
+                    <p className="text-gray-400">Secure Password Creation Tool</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  A secure and customizable password generator that helps create strong, unique passwords with various complexity options and patterns.
+                </p>
+                <a
+                  href="https://github.com/sanamhub/password-generator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View on GitHub
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1026,7 +1173,7 @@ const HomePage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-20 relative z-0"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 relative z-10 font-heading inline-block">
             Our Team
@@ -1039,7 +1186,7 @@ const HomePage: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-0">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.name} member={member} />
           ))}
@@ -1048,7 +1195,7 @@ const HomePage: React.FC = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="py-24 relative overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-6 lg:px-8 relative z-0">
           <FloatingSVGGroup
             elements={[
               {
@@ -1073,7 +1220,7 @@ const HomePage: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-16 relative z-0"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               What Our <span className="text-blue-400">Clients Say</span>
@@ -1084,12 +1231,45 @@ const HomePage: React.FC = () => {
             <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 relative z-0">
             {testimonials.map((testimonial, index) => (
-              <TestimonialCard
+              <motion.div
                 key={testimonial.name}
-                testimonial={testimonial}
-              />
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="relative overflow-hidden bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute -top-12 -left-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+                <div className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-md"></div>
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white/10">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-gray-400">{testimonial.company}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -1201,7 +1381,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Footer - Enhanced with animated background text */}
-      <footer className="bg-gray-900/80 backdrop-blur-md py-16 mt-20 rounded-t-[3rem] relative overflow-hidden">
+      <footer className="relative py-16 bg-gray-950/50 backdrop-blur-md min-h-[400px] flex items-center rounded-t-[4rem] border-t border-white/10">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
@@ -1212,12 +1392,12 @@ const HomePage: React.FC = () => {
               duration: 60,
               ease: "linear",
             }}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap h-full flex items-center"
           >
-            {Array.from({ length: 5 }).map((_, i) => (
+            {Array.from({ length: 8 }).map((_, i) => (
               <span
                 key={i}
-                className="text-[20vw] font-black text-white/[0.02] tracking-tight select-none"
+                className="text-[15vw] font-black text-white/[0.03] tracking-tight select-none leading-none h-full flex items-center"
               >
                 KOSHILABS&nbsp;
               </span>
@@ -1245,7 +1425,7 @@ const HomePage: React.FC = () => {
           maxElements={2}
         />
 
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
             {/* KoshiLabs Text */}
             <div className="text-center md:text-left">
@@ -1302,9 +1482,9 @@ const HomePage: React.FC = () => {
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                   whileHover={{ y: -3, scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  aria-label="KoshiLabs Twitter/X page"
+                  aria-label="KoshiLabs X page"
                 >
-                  <Twitter className="w-5 h-5" />
+                  <X className="w-5 h-5" />
                 </motion.a>
                 <motion.a
                   href="https://www.linkedin.com/company/koshilabs"

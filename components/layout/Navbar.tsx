@@ -95,7 +95,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center overflow-y-auto"
+          className="fixed inset-0 bg-black/90 backdrop-blur-md z-[99999] flex items-center justify-center overflow-y-auto"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -209,37 +209,38 @@ const Navbar: React.FC = () => {
       } else {
         setIsScrolled(false);
       }
+      
       // Track active section for navbar highlighting
-      const sections = [
-        "home",
-        "about",
-        "services",
-        "products",
-        "team",
-        "testimonials",
-        "faq",
-        "contact",
-      ]; // Add all your section ids
-      let currentSection = "home"; // Default
+      const sections = ["home", "about", "services", "products", "team", "testimonials", "faq", "contact"];
+      let currentSection = "home";
+      
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          ) {
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
             currentSection = sectionId;
           }
         }
       });
+      
       setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    // Use requestAnimationFrame for better scroll performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   // Close menu when clicking outside
@@ -264,14 +265,21 @@ const Navbar: React.FC = () => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Use instant scrolling instead of smooth
       const yOffset = -80; // Offset for fixed header
-      const y =
-        targetElement.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
-      window.scrollTo({ top: y, behavior: "auto" });
+      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      // Use smooth scrolling with a polyfill for better performance
+      if ('scrollBehavior' in document.documentElement.style) {
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback for browsers that don't support smooth scrolling
+        window.scrollTo(0, y);
+      }
     }
+    
     if (isMobileMenuOpen) {
       setMobileMenuOpen(false);
     }

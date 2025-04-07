@@ -30,39 +30,52 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         viewport={{ once: true }}
         whileHover={{
           y: -8,
-          boxShadow:
-            "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
           transition: { type: "spring", stiffness: 400, damping: 17 },
         }}
-        className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-xl"
+        className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-xl relative"
       >
-        <div className="flex items-start gap-3 mb-3">
+        <div className="mb-4 relative">
           <motion.div
-            className="bg-gray-800/80 p-2 rounded-lg"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            initial={{ opacity: 0.1 }}
+            animate={{ opacity: 0.1 }}
+            whileHover={{ opacity: 0.2, rotate: 5 }}
+            className="absolute right-0 top-0"
           >
-            {React.cloneElement(product.icon, { className: "w-5 h-5" })}
+            {React.cloneElement(product.icon, {
+              className: "w-20 h-20 text-current",
+            })}
           </motion.div>
-          <div className="flex-1">
-            <div className="text-sm text-blue-400 font-medium">
-              {product.category}
+
+          <div className="relative">
+            <motion.div
+              whileHover={{ scale: 1.1, x: 5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="inline-block mb-3"
+            >
+              {React.cloneElement(product.icon, { className: "w-12 h-12" })}
+            </motion.div>
+
+            <div className="flex items-center gap-3 mb-3">
+              <div className="text-sm text-blue-400 font-medium">
+                {product.category}
+              </div>
+              <motion.div
+                className="h-0.5 flex-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                whileHover={{ width: "100%", transition: { duration: 0.3 } }}
+              />
             </div>
-            <h3 className="text-xl font-bold text-white mt-1">
+
+            <h3 className="text-xl font-bold text-white mb-3">
               {product.name}
             </h3>
           </div>
         </div>
 
-        <motion.div
-          className="h-0.5 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4"
-          whileHover={{ width: "40%", transition: { duration: 0.3 } }}
-        />
-
-        <p className="text-gray-300 mb-4">{product.description}</p>
+        <p className="text-gray-300 mb-5">{product.description}</p>
 
         <Button
-          className="mt-2 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 hover:text-blue-300 px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
+          className="mt-3 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 hover:text-blue-300 px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
           onClick={() => setIsModalOpen(true)}
         >
           View Details <ArrowRight className="ml-2 w-4 h-4" />
