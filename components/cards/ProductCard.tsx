@@ -30,7 +30,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         viewport={{ once: true }}
         whileHover={{
           y: -8,
-          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+          boxShadow:
+            "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
           transition: { type: "spring", stiffness: 400, damping: 17 },
         }}
         className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-xl relative"

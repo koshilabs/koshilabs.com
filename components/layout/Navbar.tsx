@@ -209,21 +209,33 @@ const Navbar: React.FC = () => {
       } else {
         setIsScrolled(false);
       }
-      
+
       // Track active section for navbar highlighting
-      const sections = ["home", "about", "services", "products", "team", "testimonials", "faq", "contact"];
+      const sections = [
+        "home",
+        "about",
+        "services",
+        "products",
+        "team",
+        "testimonials",
+        "faq",
+        "contact",
+      ];
       let currentSection = "home";
-      
+
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          if (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          ) {
             currentSection = sectionId;
           }
         }
       });
-      
+
       setActiveSection(currentSection);
     };
 
@@ -239,8 +251,8 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', scrollHandler, { passive: true });
-    return () => window.removeEventListener('scroll', scrollHandler);
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
   // Close menu when clicking outside
@@ -266,20 +278,23 @@ const Navbar: React.FC = () => {
 
     if (targetElement) {
       const yOffset = -80; // Offset for fixed header
-      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      
+      const y =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
       // Use smooth scrolling with a polyfill for better performance
-      if ('scrollBehavior' in document.documentElement.style) {
+      if ("scrollBehavior" in document.documentElement.style) {
         window.scrollTo({
           top: y,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       } else {
         // Fallback for browsers that don't support smooth scrolling
         window.scrollTo(0, y);
       }
     }
-    
+
     if (isMobileMenuOpen) {
       setMobileMenuOpen(false);
     }

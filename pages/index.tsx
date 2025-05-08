@@ -336,27 +336,27 @@ const testimonials = [
 
 const teamMembers = [
   {
-    name: "Raju",
+    name: "Daryl",
     title: "CEO",
-    image: "/teams/raju.webp",
+    image: "/teams/1.png",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
-    name: "Sanam",
+    name: "Mark",
     title: "CTO",
-    image: "/teams/sanam.webp",
+    image: "/teams/2.png",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
-    name: "Gopal",
+    name: "Ching",
     title: "Software Architect",
-    image: "/teams/gopal.webp",
+    image: "/teams/3.png",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
   {
     name: "Loop",
     title: "Software Engineer",
-    image: "/teams/loop.webp",
+    image: "/teams/4.png",
     social: { linkedin: "#", github: "#", twitter: "#" },
   },
 ];
@@ -488,27 +488,42 @@ const HomePage: React.FC = () => {
           name="keywords"
           content="KoshiLabs, Koshi Labs, software development, Birtamode, Jhapa, Nepal, web development, mobile app development, database, performance optimization, AI solutions, custom software, digital transformation, IT services, consulting, Nepali tech company, software company Nepal"
         />
-        <meta property="og:title" content="Koshi Labs Pvt. Ltd. - Premier Software Development Company in Nepal" />
+        <meta
+          property="og:title"
+          content="Koshi Labs Pvt. Ltd. - Premier Software Development Company in Nepal"
+        />
         <meta
           property="og:description"
           content="Leading software development company in Birtamode, Jhapa, Nepal offering innovative solutions in web development, mobile apps, and AI services."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://koshilabs.com" />
-        <meta property="og:image" content="https://koshilabs.com/og-image.jpg" />
+        <meta
+          property="og:image"
+          content="https://koshilabs.com/og-image.jpg"
+        />
         <meta property="og:site_name" content="KoshiLabs" />
         <meta property="og:locale" content="en_US" />
-        
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="KoshiLabs - Crafting Digital Excellence" />
-        <meta name="twitter:description" content="Leading software development company in Birtamode, Jhapa, Nepal offering innovative solutions in web development, mobile apps, and AI services." />
-        <meta name="twitter:image" content="https://koshilabs.com/og-image.jpg" />
-        
+        <meta
+          name="twitter:title"
+          content="KoshiLabs - Crafting Digital Excellence"
+        />
+        <meta
+          name="twitter:description"
+          content="Leading software development company in Birtamode, Jhapa, Nepal offering innovative solutions in web development, mobile apps, and AI services."
+        />
+        <meta
+          name="twitter:image"
+          content="https://koshilabs.com/og-image.jpg"
+        />
+
         <meta name="geo.region" content="NP-P1" />
         <meta name="geo.placename" content="Birtamode, Jhapa" />
         <meta name="geo.position" content="26.6418;87.9927" />
         <meta name="ICBM" content="26.6418, 87.9927" />
-        
+
         <link rel="canonical" href="https://koshilabs.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -562,8 +577,8 @@ const HomePage: React.FC = () => {
             animate="visible"
             className="text-xl text-gray-300 mb-12 leading-relaxed"
           >
-            Your trusted partner for innovative software solutions. 
-            We specialize in development, consulting, and AI-powered services.
+            Your trusted partner for innovative software solutions. We
+            specialize in development, consulting, and AI-powered services.
           </motion.p>
           <motion.div
             variants={fadeInVariants}
@@ -571,7 +586,7 @@ const HomePage: React.FC = () => {
             animate="visible"
             className="flex flex-wrap gap-4"
           >
-            <motion.a 
+            <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -813,7 +828,7 @@ const HomePage: React.FC = () => {
             <div className="relative group">
               {/* Glowing border effect */}
               <div className="absolute inset-0 rounded-2xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-500"></div>
-              
+
               {/* Main card content */}
               <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
                 <div className="flex items-center gap-3 mb-8">
@@ -826,7 +841,7 @@ const HomePage: React.FC = () => {
                 </div>
 
                 <div className="space-y-8">
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
@@ -838,12 +853,13 @@ const HomePage: React.FC = () => {
                         Unwavering Commitment to Quality
                       </h4>
                       <p className="text-gray-300 mt-2">
-                        We go above and beyond to deliver software that exceeds your expectations.
+                        We go above and beyond to deliver software that exceeds
+                        your expectations.
                       </p>
                     </div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
@@ -855,12 +871,13 @@ const HomePage: React.FC = () => {
                         Affordable Excellence
                       </h4>
                       <p className="text-gray-300 mt-2">
-                        High-quality software doesn't have to break the bank. We offer competitive pricing without compromising quality.
+                        High-quality software doesn't have to break the bank. We
+                        offer competitive pricing without compromising quality.
                       </p>
                     </div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
@@ -872,12 +889,13 @@ const HomePage: React.FC = () => {
                         Local Expertise, Global Standards
                       </h4>
                       <p className="text-gray-300 mt-2">
-                        We understand unique market challenges and apply global best practices to deliver impactful solutions.
+                        We understand unique market challenges and apply global
+                        best practices to deliver impactful solutions.
                       </p>
                     </div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
@@ -889,7 +907,9 @@ const HomePage: React.FC = () => {
                         Dedicated Support
                       </h4>
                       <p className="text-gray-300 mt-2">
-                        We're more than just developers; we're your partners. We provide ongoing support to ensure your software meets evolving needs.
+                        We're more than just developers; we're your partners. We
+                        provide ongoing support to ensure your software meets
+                        evolving needs.
                       </p>
                     </div>
                   </motion.div>
@@ -1001,7 +1021,8 @@ const HomePage: React.FC = () => {
               KoshiLabs <span className="text-pink-400">❤️</span> Open Source
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              We believe in giving back to the community. Check out our open source projects that help developers worldwide.
+              We believe in giving back to the community. Check out our open
+              source projects that help developers worldwide.
             </p>
             <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />
           </motion.div>
@@ -1025,12 +1046,19 @@ const HomePage: React.FC = () => {
                     <Code2 className="w-8 h-8 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">NepDate</h3>
-                    <p className="text-gray-400">Super-fast Nepali Date struct for .NET</p>
+                    <h3 className="text-xl font-semibold text-white">
+                      NepDate
+                    </h3>
+                    <p className="text-gray-400">
+                      Super-fast Nepali Date struct for .NET
+                    </p>
                   </div>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  A high-performance Nepali Date struct that closely resembles the DateOnly struct in .NET, featuring smart date parsing, fiscal year operations, and comprehensive serialization support.
+                  A high-performance Nepali Date struct that closely resembles
+                  the DateOnly struct in .NET, featuring smart date parsing,
+                  fiscal year operations, and comprehensive serialization
+                  support.
                 </p>
                 <a
                   href="https://github.com/TheCrossLegCoder/NepDate"
@@ -1039,8 +1067,12 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   View on GitHub
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
               </div>
@@ -1064,12 +1096,16 @@ const HomePage: React.FC = () => {
                     <Database className="w-8 h-8 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">PostgreSQL to MSSQL</h3>
+                    <h3 className="text-xl font-semibold text-white">
+                      PostgreSQL to MSSQL
+                    </h3>
                     <p className="text-gray-400">Database Migration Tool</p>
                   </div>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  A powerful tool for migrating PostgreSQL databases to Microsoft SQL Server, featuring schema conversion, data migration, and comprehensive error handling.
+                  A powerful tool for migrating PostgreSQL databases to
+                  Microsoft SQL Server, featuring schema conversion, data
+                  migration, and comprehensive error handling.
                 </p>
                 <a
                   href="https://github.com/sanamhub/postgresql-to-mssql"
@@ -1078,8 +1114,12 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   View on GitHub
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
               </div>
@@ -1103,12 +1143,16 @@ const HomePage: React.FC = () => {
                     <Wand2 className="w-8 h-8 text-pink-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">DotNetMapper</h3>
+                    <h3 className="text-xl font-semibold text-white">
+                      DotNetMapper
+                    </h3>
                     <p className="text-gray-400">Object Mapping Library</p>
                   </div>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  A lightweight and efficient object mapping library for .NET, designed to simplify the process of mapping between different object types with minimal configuration.
+                  A lightweight and efficient object mapping library for .NET,
+                  designed to simplify the process of mapping between different
+                  object types with minimal configuration.
                 </p>
                 <a
                   href="https://github.com/sanamhub/DotNetMapper"
@@ -1117,8 +1161,12 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   View on GitHub
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
               </div>
@@ -1142,12 +1190,18 @@ const HomePage: React.FC = () => {
                     <Lock className="w-8 h-8 text-green-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">Password Generator</h3>
-                    <p className="text-gray-400">Secure Password Creation Tool</p>
+                    <h3 className="text-xl font-semibold text-white">
+                      Password Generator
+                    </h3>
+                    <p className="text-gray-400">
+                      Secure Password Creation Tool
+                    </p>
                   </div>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  A secure and customizable password generator that helps create strong, unique passwords with various complexity options and patterns.
+                  A secure and customizable password generator that helps create
+                  strong, unique passwords with various complexity options and
+                  patterns.
                 </p>
                 <a
                   href="https://github.com/sanamhub/password-generator"
@@ -1156,8 +1210,12 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   View on GitHub
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
               </div>
@@ -1519,7 +1577,7 @@ const HomePage: React.FC = () => {
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
               </motion.div>
-              
+
               <motion.div
                 className="text-gray-400 text-sm mt-6"
                 whileHover={{ color: "#60A5FA" }}
@@ -1567,7 +1625,7 @@ const HomePage: React.FC = () => {
                 whileHover={{ opacity: 1 }}
                 initial={{ opacity: 0.9 }}
               >
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center md:justify-end gap-3"
                   whileHover={{ x: -5, color: "#60A5FA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -1577,7 +1635,7 @@ const HomePage: React.FC = () => {
                   </div>
                   <span>Birtamod, Koshi Province, Nepal</span>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center md:justify-end gap-3"
                   whileHover={{ x: -5, color: "#60A5FA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -1594,7 +1652,7 @@ const HomePage: React.FC = () => {
                     </a>
                   </span>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center md:justify-end gap-3"
                   whileHover={{ x: -5, color: "#60A5FA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}

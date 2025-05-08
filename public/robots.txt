@@ -4,4 +4,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://koshilabs.com/sitemap.xml 
+Sitemap: https://koshilabs.com/sitemap.xml
